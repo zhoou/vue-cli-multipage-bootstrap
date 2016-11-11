@@ -29,7 +29,7 @@ npm test
 npm run dev
 
 访问地址：
-http://localhost:9091/module/index.html
-http://localhost:9091/module/basedemo.html
+1. http://localhost:9091/module/index.html
+2. http://localhost:9091/module/basedemo.html
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
