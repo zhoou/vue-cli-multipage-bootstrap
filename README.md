@@ -34,4 +34,4 @@ npm run dev
 <li>http://localhost:9091/module/basedemo.html</li>
 </ul>
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+Welcome guidance ！！
