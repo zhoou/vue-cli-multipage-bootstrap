@@ -31,7 +31,7 @@ npm run dev
 访问地址：
 <ul>
 <li>welcome界面： http://localhost:9091/module/index.html</li>
-<li>入门篇： http://localhost:9091/module/index.html</li>
+<li>入门篇： http://localhost:9091/module/startdemo.html</li>
 <li>基础篇： http://localhost:9091/module/basedemo.html</li>
 </ul>
 
