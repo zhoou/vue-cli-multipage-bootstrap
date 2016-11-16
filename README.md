@@ -26,7 +26,9 @@ npm test
 
 ## Dev Environment
 
-npm run dev
+`npm install`
+
+`npm run dev`
 
 访问地址：
 <ul>
