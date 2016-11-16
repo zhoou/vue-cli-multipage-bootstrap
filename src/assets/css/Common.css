@@ -72,6 +72,7 @@ body>h1{
     position: relative;
     padding: 0.8em 0.8em 0.4em;
     line-height: 1.1em;
+    max-height: 560px;
 }
 .highlight pre {
     word-break: normal;

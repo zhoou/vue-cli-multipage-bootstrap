@@ -100,7 +100,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new ExtractTextPlugin('css/[name].css', {allChunks: true})
+    new ExtractTextPlugin('css/styles.css', {allChunks: true})
   ],
   eslint: {
     formatter: require('eslint-friendly-formatter')

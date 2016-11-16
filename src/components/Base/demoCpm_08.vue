@@ -1,23 +1,27 @@
-<template id="demo01">
+<template id="demo08">
   <div class="row">
-    <div class="col-xs-4">
-      <div class="demo" v-cloak>
-        <p>Original message: "{{ message }}"</p>
-        <p>Computed reversed message: "{{ reversedMessage }}"</p>
-      </div>
-    </div>
-    <div class="col-xs-4">
-      <div class="zero-clipboard"><span class="btn-clipboard">Html</span></div>
-      <div class="highlight">
+    <div class="col-xs-6">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="demo" v-cloak>
+            <p>Original message: "{{ message }}"</p>
+            <p>Computed reversed message: "{{ reversedMessage }}"</p>
+          </div>
+        </div>
+        <div class="col-xs-12">
+          <div class="zero-clipboard"><span class="btn-clipboard">Html</span></div>
+          <div class="highlight">
         <pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span
           class="string">"example"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span
           class="name">p</span>&gt;</span>Original message: "{{ <label>message</label> }}"<span class="tag">&lt;/<span
           class="name">p</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Computed reversed message: "{{ <label>reversedMessage</label> }}"<span
           class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span
           class="name">div</span>&gt;</span></div></pre>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="col-xs-4">
+    <div class="col-xs-6">
       <div class="zero-clipboard"><span class="btn-clipboard">Js</span></div>
       <div class="highlight">
         <pre><div class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue({</div><div
@@ -38,7 +42,7 @@
 
 <script>
     export default{
-      name: 'demo01',
+      name: 'demo08',
       data () {
         return {
           message: 'Hello!'

@@ -8,8 +8,12 @@
           <demoCpm08></demoCpm08>
         </div>
         <div class="bs-example">
-          <h4>在模板中绑定表达式是非常便利的，但是它们实际上只用于简单的操作。任何复杂逻辑应当使用计算属性。</h4>
+          <h4>通过 watch 选项，来响应数据的变化。</h4>
           <demoCpm09></demoCpm09>
+        </div>
+        <div class="bs-example">
+          <h4>绑定-HTML-Class</h4>
+          <demoCpm10></demoCpm10>
         </div>
       </div>
     </div>
@@ -19,12 +23,14 @@
 <script>
     import demoCpm08 from 'components/Base/demoCpm_08'
     import demoCpm09 from 'components/Base/demoCpm_09'
+    import demoCpm10 from 'components/Base/demoCpm_10'
 
     export default{
       name: 'BaseDemo',
       components: {
         demoCpm08,
-        demoCpm09
+        demoCpm09,
+        demoCpm10
       }
     }
 </script>
