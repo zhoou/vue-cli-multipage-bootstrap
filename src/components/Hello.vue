@@ -17,6 +17,19 @@
       <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
     </ul>
+    <div class="container">
+      <div class="row">
+        <div class='bg-success' style="padding:10px;">
+          <h2>Zhoou Demo</h2>
+          <ul>
+            <li><a href="./startdemo.html" target="_self">入门篇: start</a></li>
+            <li><a href="./basedemo.html" target="_self">基础篇: base</a></li>
+            <li><a href="javascript:void(0)" target="_self">提高篇：improve</a></li>
+            <li><a href="javascript:void(0)" target="_self">进阶篇：advance</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -25,7 +38,7 @@ export default {
   name: 'hello',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to zhoou Vue.js 2.0 App'
     }
   }
 }

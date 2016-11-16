@@ -31,6 +31,10 @@
           <h4>v-bind 指令将 todo 传到每一个重复的组件中</h4>
           <demoCmp07></demoCmp07>
         </div>
+        <div class="pagelink">
+          <a href="./index.html" class="btn">&lt;&lt;返回主页</a>
+          <a href="./basedemo.html" class="btn">基础篇: base&gt;&gt;</a>
+        </div>
       </div>
     </div>
   </div>

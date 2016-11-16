@@ -15,6 +15,10 @@
           <h4>绑定-HTML-Class</h4>
           <demoCpm10></demoCpm10>
         </div>
+        <div class="pagelink">
+          <a href="./startdemo.html" class="btn">&lt;&lt;基础篇: base</a>
+          <a href="javascript:void(0)" class="btn">&gt;&gt;提高篇：improve</a>
+        </div>
       </div>
     </div>
   </div>

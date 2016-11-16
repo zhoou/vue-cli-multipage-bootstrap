@@ -99,6 +99,9 @@ pre .tag{
 pre .number, pre .literal {
     color: #ae81ff;
 }
+.pagelink{
+  text-align: center;
+}
 .demo {
     border: 1px solid #eee;
     border-radius: 2px;
