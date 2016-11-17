@@ -4,15 +4,18 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="demo" v-cloak>
-            <span v-bind:class="classObject">{{message}}</span>
+            <span v-bind:class="classObject">{{message}}</span><br/>
+            <span v-bind:style="styleObject">{{message2}}</span>
           </div>
         </div>
         <div class="col-xs-12">
           <div class="zero-clipboard"><span class="btn-clipboard">Html</span></div>
           <div class="highlight">
-            <pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span
-              class="attr">v-bind:class</span>=<span class="string">"classObject"</span>&gt;</span><span class="tag">&lt;/<span
-              class="name">div</span>&gt;</span></div></pre>
+            <pre><div class="line"><span class="tag">&lt;<span class="name">p</span> <span
+              class="attr">v-bind:class</span>=<span class="string">"classObject"</span>&gt;</span><span class="tag">Hello!&lt;/<span
+              class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span> <span
+              class="attr">v-bind:style</span>=<span class="string">"styleObject"</span>&gt;</span><span class="tag">Vue 2.0&lt;/<span
+              class="name">p</span>&gt;</span></div></pre>
           </div>
         </div>
       </div>
@@ -22,7 +25,10 @@
       <div class="highlight">
         <pre><div class="line">data: {</div><div class="line">  <span class="attr">isActive</span>: <span
           class="literal">true</span>,</div><div class="line">  <span class="attr">success</span>: <span
-          class="literal">true</span>,</div><div class="line">  <span class="attr">error</span>: <span class="literal">null</span></div><div
+          class="literal">true</span>,</div><div class="line">  <span class="attr">error</span>: <span class="literal">null,</span></div><div
+          class="line">  <span class="attr">styleObject</span>: {</div><div class="line">    <span
+          class="attr">color</span>: <span class="string">'red'</span>,</div><div class="line">    <span class="attr">fontSize</span>: <span
+          class="string">'13px'</span></div><div class="line">  }</div><div
           class="line">},</div><div class="line"><span class="attr">computed</span>: {</div><div class="line">  <span
           class="attr">classObject</span>: <span class="function"><span class="keyword">function</span> (<span
           class="params"></span>) </span>{</div><div class="line">    <span class="keyword">return</span> {</div><div
@@ -44,9 +50,14 @@
       data () {
         return {
           message: 'Hello!',
+          message2: 'Vue 2.0',
           isActive: true,
           success: true,
-          error: null
+          error: null,
+          styleObject: {
+            color: 'red',
+            fontSize: '13px'
+          }
         }
       },
       computed: {
@@ -59,4 +70,5 @@
         }
       }
     }
+
 </script>

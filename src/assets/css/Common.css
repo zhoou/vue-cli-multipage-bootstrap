@@ -106,7 +106,7 @@ pre .number, pre .literal {
     border: 1px solid #eee;
     border-radius: 2px;
     padding: 10px;
-    min-height: 180px;
+    height: 180px;
     font-size: 1.2em;
     line-height: 1.5em;
     -webkit-user-select: none;
