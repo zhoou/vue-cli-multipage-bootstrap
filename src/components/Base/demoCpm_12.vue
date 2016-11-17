@@ -76,9 +76,7 @@
     methods: {
       greet: function (event) {
         // `this` 在方法里指当前 Vue 实例
-        alert('Hello ' + this.name + '!'+' event.target.tagName:'+event.target.tagName)
-        // `event` 是原生 DOM 事件
-        alert()
+        // 'alerts('Hello ' + this.name + '!'+' event.target.tagName:'+event.target.tagName)'
       }
     }
   }
