@@ -64,12 +64,7 @@
     data () {
       return {
         counter: 0,
-        newTodoText: '',
-        todos: [
-          'Do the dishes',
-          'Take out the trash',
-          'Mow the lawn'
-        ]
+        modalshow: true
       }
     },
     // 在 `methods` 对象中定义方法
@@ -77,6 +72,7 @@
       greet: function (event) {
         // `this` 在方法里指当前 Vue 实例
         // 'alerts('Hello ' + this.name + '!'+' event.target.tagName:'+event.target.tagName)'
+        this.modalshow = true
       }
     }
   }

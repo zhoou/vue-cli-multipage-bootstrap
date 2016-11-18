@@ -25,10 +25,11 @@
         </div>
         <div class="pagelink">
           <a href="./startdemo.html" class="btn">&lt;&lt;基础篇: base</a>
-          <a href="javascript:void(0)" class="btn">&gt;&gt;提高篇：improve</a>
+          <a href="javascript:void(0)" class="btn">提高篇：improve&gt;&gt;</a>
         </div>
       </div>
     </div>
+    <modal :modalshow = "modalshow"></modal>
   </div>
 </template>
 
@@ -38,15 +39,18 @@
     import demoCpm10 from 'components/Base/demoCpm_10'
     import demoCpm11 from 'components/Base/demoCpm_11'
     import demoCpm12 from 'components/Base/demoCpm_12'
+    import modal from 'components/Common/modalCpm'
 
     export default{
       name: 'BaseDemo',
+      props: ['modalshow'],
       components: {
         demoCpm08,
         demoCpm09,
         demoCpm10,
         demoCpm11,
-        demoCpm12
+        demoCpm12,
+        modal
       }
     }
 </script>
