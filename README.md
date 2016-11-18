@@ -5,6 +5,15 @@
 ## Build Setup
 
 ``` bash
+# 安装vue-cli
+npm install -g vue-cli
+
+# 使用vue-cli初始化项目
+vue init webpack my-project
+
+# 进入到目录
+cd my-project
+
 # install dependencies
 npm install
 
