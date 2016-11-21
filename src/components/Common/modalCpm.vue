@@ -1,11 +1,14 @@
-<template id="modalShow">
-  <div class="modal-mask" v-if="modalshow" transition="modal">
+<template id="vmodal">
+  <div class="modal-mask" v-if="show">
     <div class="modal-confirm">
       <h2 class="confirm-header">
         <i class="iconfont icon-questioncircle"></i> {{ title }}
       </h2>
       <div class="confirm-content">
-        {{ content }}
+        <slot name="slotA"></slot>
+        <slot name="slotB"></slot>
+        <slot name="slotC"></slot>
+        <template v-if="!slot">{{content}}</template>
       </div>
       <div class="confirm-btns">
         <button class="btn" @click="op(1)">取 消</button>
@@ -100,17 +103,42 @@
 
 <script>
   export default{
-    name: '#modalShow',
+    name: 'vmodal',
     props: {
-      modalshow: {
+      show: {
         type: Boolean,
         default: false
-      }
+      },
+      title: {
+        default: ' 温馨提示！'
+      },
+      content: ''
     },
     data () {
       return {
-        title: '你确定要删除？',
-        content: '请慎重考虑哦！...'
+        onCancel: false,
+        onOk: false
+      }
+    },
+    methods: {
+      op (type) {
+        this.$emit('changeState', false)
+        if (type === '1') {
+          if (this.onCancel) this.onCancel()
+        } else {
+          if (this.onOk) this.onOk()
+        }
+        this.onCancel = false
+        this.onOk = false
+        document.body.style.overflow = ''
+      },
+      alert (setting) {
+        this.title = setting.title || '标题'
+        this.content = setting.content || '内容'
+        this.onOk = setting.onOk || false
+        this.onCancel = setting.onCancel || false
+        this.$emit('changeState', true)
+        document.body.style.overflow = 'hidden'
       }
     }
   }
