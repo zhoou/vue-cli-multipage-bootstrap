@@ -112,7 +112,8 @@
       title: {
         default: ' 温馨提示！'
       },
-      content: ''
+      content: '',
+      slot: ''
     },
     data () {
       return {
@@ -124,13 +125,19 @@
       op (type) {
         this.$emit('changeState', false)
         if (type === '1') {
-          if (this.onCancel) this.onCancel()
+          this.$options.methods.cancelEvent()
         } else {
-          if (this.onOk) this.onOk()
+          this.$options.methods.OkEvent()
         }
         this.onCancel = false
         this.onOk = false
         document.body.style.overflow = ''
+      },
+      OkEvent () {
+        this.$emit('okEvent')
+      },
+      cancelEvent () {
+        this.$emit('cancelEvent')
       },
       alert (setting) {
         this.title = setting.title || '标题'

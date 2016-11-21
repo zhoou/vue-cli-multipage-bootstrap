@@ -25,7 +25,7 @@
         </div>
         <div class="pagelink">
           <a href="./startdemo.html" class="btn">&lt;&lt;基础篇: base</a>
-          <a href="javascript:void(0)" class="btn">提高篇：improve&gt;&gt;</a>
+          <a href="./improvedemo.html" class="btn">提高篇：improve&gt;&gt;</a>
         </div>
       </div>
     </div>
