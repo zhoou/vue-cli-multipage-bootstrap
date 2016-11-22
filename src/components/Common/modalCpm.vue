@@ -1,21 +1,23 @@
 <template id="vmodal">
-  <div class="modal-mask" v-if="show">
-    <div class="modal-confirm">
-      <h2 class="confirm-header">
-        <i class="iconfont icon-questioncircle"></i> {{ title }}
-      </h2>
-      <div class="confirm-content">
-        <slot name="slotA"></slot>
-        <slot name="slotB"></slot>
-        <slot name="slotC"></slot>
-        <template v-if="!slot">{{content}}</template>
-      </div>
-      <div class="confirm-btns">
-        <button class="btn" @click="op(false)">取 消</button>
-        <button class="btn btn-primary" @click="op(true)">确 定</button>
+  <transition name="modal">
+    <div class="modal-mask" v-if="show">
+      <div class="modal-confirm">
+        <h2 class="confirm-header">
+          <i class="iconfont icon-questioncircle"></i> {{ title }}
+        </h2>
+        <div class="confirm-content">
+          <slot name="slotA"></slot>
+          <slot name="slotB"></slot>
+          <slot name="slotC"></slot>
+          <template v-if="!slot">{{content}}</template>
+        </div>
+        <div class="confirm-btns">
+          <button class="btn" @click="op(false)">取 消</button>
+          <button class="btn btn-primary" @click="op(true)">确 定</button>
+        </div>
       </div>
     </div>
-  </div>
+  </transition>
 </template>
 
 <style>
@@ -59,19 +61,17 @@
     text-align: right;
     padding-bottom:20px;
 }
-.modal-enter, .modal-leave {
+
+.modal-enter-active {
+  transition: all .4s ease;
+}
+.modal-leave-active {
+  transition: all .5s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.modal-enter, .modal-leave-active {
   opacity: 0;
 }
-.modal-transition{
-  transition: all .3s ease;
-}
 
-.modal-enter .modal-confirm,.modal-leave .modal-confirm {
-  transform: scale(1.1);
-}
-.modal-transition{
-  transition: all .3s ease;
-}
 .modal-confirm i {
     color: #fa0;
     font-size: 24px;
@@ -85,7 +85,7 @@
 
 @font-face {
  font-family: iconfont;
- src:url(../../assets/fonts/iconfont.woff) format("woff")
+ src: url(../../assets/fonts/iconfont.woff) format("woff")
 }
 
 .iconfont {
@@ -123,8 +123,6 @@
     },
     methods: {
       op (type) {
-        console.log(type)
-        console.log(type === false)
         this.$emit('changeState', false)
         if (type === false) {
           this.$emit('cancelEvent')

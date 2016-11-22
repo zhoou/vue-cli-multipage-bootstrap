@@ -42,11 +42,11 @@
           class="line">  }</div><div class="line">})</div></pre>
       </div>
     </div>
-    <vmodal :show='show' @changeState="changeShowState" @okEvent="confirmOk" @cancelEvent="confirmCancle">
-      <div slot="slotA">
-        <p>{{content}}</p>
-      </div>
-    </vmodal>
+      <vmodal :show='show' @changeState="changeShowState" @okEvent="confirmOk" @cancelEvent="confirmCancle">
+        <div slot="slotA">
+          <p>{{content}}</p>
+        </div>
+      </vmodal>
   </div>
 </template>
 
