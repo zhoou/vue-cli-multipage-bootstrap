@@ -11,8 +11,8 @@
         <template v-if="!slot">{{content}}</template>
       </div>
       <div class="confirm-btns">
-        <button class="btn" @click="op(1)">取 消</button>
-        <button class="btn btn-primary" @click="op(2)">确 定</button>
+        <button class="btn" @click="op(false)">取 消</button>
+        <button class="btn btn-primary" @click="op(true)">确 定</button>
       </div>
     </div>
   </div>
@@ -123,21 +123,17 @@
     },
     methods: {
       op (type) {
+        console.log(type)
+        console.log(type === false)
         this.$emit('changeState', false)
-        if (type === '1') {
-          this.$options.methods.cancelEvent()
+        if (type === false) {
+          this.$emit('cancelEvent')
         } else {
-          this.$options.methods.OkEvent()
+          this.$emit('okEvent')
         }
         this.onCancel = false
         this.onOk = false
         document.body.style.overflow = ''
-      },
-      OkEvent () {
-        this.$emit('okEvent')
-      },
-      cancelEvent () {
-        this.$emit('cancelEvent')
       },
       alert (setting) {
         this.title = setting.title || '标题'
