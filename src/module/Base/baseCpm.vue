@@ -1,6 +1,5 @@
 <template id="BaseDemo">
-  <div class="container">
-    <div class="panel panel-primary">
+  <div class="panel panel-primary">
       <div class="panel-heading">二、Vue.js 基础</div>
       <div class="panel-body">
         <div class="bs-example">
@@ -29,7 +28,6 @@
         </div>
       </div>
     </div>
-  </div>
 </template>
 
 <script>

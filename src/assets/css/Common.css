@@ -146,4 +146,19 @@ pre .number, pre .literal {
         border-bottom-left-radius: 4px;
     }
 }
-
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+#app>h1{
+  color: #c7254e;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+#app ul.nav{
+  margin-bottom: 30px;
+}
