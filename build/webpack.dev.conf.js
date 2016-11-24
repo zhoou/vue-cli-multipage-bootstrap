@@ -4,7 +4,6 @@ var merge = require('webpack-merge')
 var utils = require('./utils')
 var baseWebpackConfig = require('./webpack.base.conf')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var path = require('path');
 var glob = require('glob');
 // add hot-reload related code to entry chunks
@@ -13,9 +12,9 @@ Object.keys(baseWebpackConfig.entry).forEach(function (name) {
 })
 
 module.exports = merge(baseWebpackConfig, {
-  module: {
-    loaders: utils.styleLoaders({sourceMap: config.dev.cssSourceMap})
-  },
+  // module: {
+  //   loaders: utils.styleLoaders({sourceMap: config.dev.cssSourceMap})
+  // },
   // eval-source-map is faster for development
   devtool: '#eval-source-map',
   plugins: [
@@ -35,15 +34,6 @@ module.exports = merge(baseWebpackConfig, {
   ]
 })
 
-module.exports = merge(baseWebpackConfig, {
-  devtool: '#eval-source-map',
-  plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
-  ]
-})
-
 function getEntry(globPath) {
   var entries = {},
     basename, tmp, pathname;
@@ -54,7 +44,7 @@ function getEntry(globPath) {
     pathname = tmp.splice(0, 1) + '/' + basename; // 正确输出js和html的路径
     entries[pathname] = entry;
   });
-  console.log(entries);
+
   return entries;
 }
 

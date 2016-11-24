@@ -4,7 +4,6 @@ var utils = require('./utils')
 var webpack = require('webpack')
 var merge = require('webpack-merge')
 var baseWebpackConfig = require('./webpack.base.conf')
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
@@ -13,9 +12,9 @@ var env = process.env.NODE_ENV === 'testing'
 var glob = require('glob');
 
 var webpackConfig = merge(baseWebpackConfig, {
-  module: {
-    loaders: utils.styleLoaders({ sourceMap: config.build.productionSourceMap, extract: true })
-  },
+  // module: {
+  //   loaders: utils.styleLoaders({sourceMap: config.build.productionSourceMap, extract: true})
+  // },
   devtool: config.build.productionSourceMap ? '#source-map' : false,
   output: {
     path: config.build.assetsRoot,
@@ -33,14 +32,18 @@ var webpackConfig = merge(baseWebpackConfig, {
     new webpack.DefinePlugin({
       'process.env': env
     }),
+    //负责压缩处理js
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false
       }
     }),
+    //处理分包的机制的插件
     new webpack.optimize.OccurenceOrderPlugin(),
+
     // extract css into its own file
-    new ExtractTextPlugin(utils.assetsPath('css/[name].[contenthash].css')),
+    // new ExtractTextPlugin(utils.assetsPath('css/styles.[contenthash].css')),
+
     // generate dist index.html with correct asset hash for caching.
     // you can customize output by editing /index.html
     // see https://github.com/ampedandwired/html-webpack-plugin
@@ -119,10 +122,18 @@ var pages = getEntry('./src/module/**/*.html');
 for (var pathname in pages) {
   // 配置生成的html文件，定义路径等
   var conf = {
-    // filename: pathname + '.html',
     filename: pathname + '.html',
     template: pages[pathname], // 模板路径
-    inject: true              // js插入位置
+    inject: true,              // js插入位置
+    minify: {
+      removeComments: true,
+      collapseWhitespace: true,
+      removeAttributeQuotes: true
+      // more options:
+      // https://github.com/kangax/html-minifier#options-quick-reference
+    },
+    // necessary to consistently work with multiple chunks via CommonsChunkPlugin
+    chunksSortMode: 'dependency'
   };
   // 需要生成几个html文件，就配置几个HtmlWebpackPlugin对象
   webpackConfig.plugins.push(new HtmlWebpackPlugin(conf));

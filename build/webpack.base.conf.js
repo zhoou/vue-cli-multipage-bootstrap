@@ -1,10 +1,12 @@
 var path = require('path')
 var config = require('../config')
 var utils = require('./utils')
+var webpack = require('webpack')
 var projectRoot = path.resolve(__dirname, '../')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var glob = require('glob');
 var entries = getEntry('./src/module/**/*.js'); // 获得入口js文件
+var autoprefixer = require('autoprefixer');
 
 function getEntry(globPath) {
   var entries = {},
@@ -16,8 +18,7 @@ function getEntry(globPath) {
     pathname = tmp.splice(0, 1) + '/' + basename; // 正确输出js和html的路径
     entries[pathname] = entry;
   });
-  console.log("base-entrys:");
-  console.log(entries);
+
   return entries;
 }
 
@@ -28,20 +29,25 @@ var cssSourceMapDev = (env === 'development' && config.dev.cssSourceMap)
 var cssSourceMapProd = (env === 'production' && config.build.productionSourceMap)
 var useCssSourceMap = cssSourceMapDev || cssSourceMapProd
 
-module.exports = {
-  entry: entries,
+var webpackBaseConfig = {
+  entry: Object.assign(entries,{
+    vendors : ['jquery', 'bootstrap']
+  }),
   output: {
     path: config.build.assetsRoot,
     publicPath: process.env.NODE_ENV === 'production' ? config.build.assetsPublicPath : config.dev.assetsPublicPath,
     filename: '[name].js'
   },
   resolve: {
-    extensions: ['', '.js', '.vue'],
+    extensions: ['', '.js', '.vue','.css'],
     fallback: [path.join(__dirname, '../node_modules')],
     alias: {
       'vue$': 'vue/dist/vue',
       'src': path.resolve(__dirname, '../src'),
-      'components': path.resolve(__dirname, '../src/components')
+      'assets': path.resolve(__dirname, '../src/assets'),
+      'components': path.resolve(__dirname, '../src/components'),
+      jquery: path.resolve(__dirname, '../src/assets/js/libs/jquery.min.js'),
+      bootstrap: path.resolve(__dirname, '../src/assets/js/libs/bootstrap.min.js')
     }
   },
   resolveLoader: {
@@ -100,7 +106,13 @@ module.exports = {
     ]
   },
   plugins: [
-    new ExtractTextPlugin('css/styles.css', {allChunks: true})
+    new ExtractTextPlugin('css/styles.[contenthash].css', {allChunks: true}),
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery",
+      "window.jQuery": "jquery"
+    }),
+    new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js')
   ],
   eslint: {
     formatter: require('eslint-friendly-formatter')
@@ -113,4 +125,5 @@ module.exports = {
       })
     ]
   }
-}
+};
+module.exports = webpackBaseConfig;
