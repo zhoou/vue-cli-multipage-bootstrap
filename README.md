@@ -1,6 +1,29 @@
 # Vue Learn
 
-> A Vue.js2.0 project
+> A Vue.js2.0 project with Bootstrap which integrated the vue official online examples to components and some components build by myself to anyone who interested in .
+
+## Dev Environment
+
+`npm install`
+
+`npm run dev`
+
+###The initial access path：
+<ul>
+<li>welcome界面： http://localhost:9091/module/index.html</li>
+<li>入门篇： http://localhost:9091/module/startdemo.html</li>
+<li>基础篇： http://localhost:9091/module/basedemo.html</li>
+</ul>
+
+## Prod Environment
+
+`npm install`
+
+`npm run build`
+
+Please take the published content to the local server IIS or on another server you like ,
+
+and then the initial access path ：(serverIP)/module/index.html
 
 ## Build Setup
 
@@ -32,18 +55,5 @@ npm run e2e
 # run all tests
 npm test
 ```
-
-## Dev Environment
-
-`npm install`
-
-`npm run dev`
-
-访问地址：
-<ul>
-<li>welcome界面： http://localhost:9091/module/index.html</li>
-<li>入门篇： http://localhost:9091/module/startdemo.html</li>
-<li>基础篇： http://localhost:9091/module/basedemo.html</li>
-</ul>
 
 Welcome guidance ！！
