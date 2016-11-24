@@ -1,5 +1,6 @@
 <template id="ImproveDemo">
-  <div class="panel panel-primary">
+  <div class="container">
+    <div class="panel panel-primary">
       <div class="panel-heading">三、Vue.js 提高</div>
       <div class="panel-body">
         <div class="bs-example">
@@ -20,6 +21,7 @@
         </div>
       </div>
     </div>
+  </div>
 </template>
 
 <script>
