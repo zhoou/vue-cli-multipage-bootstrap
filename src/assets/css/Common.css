@@ -162,3 +162,7 @@ pre .number, pre .literal {
 #app ul.nav{
   margin-bottom: 30px;
 }
+#navs li a.v-link-active{
+  color: #fff;
+  background-color: #428bca;
+}
