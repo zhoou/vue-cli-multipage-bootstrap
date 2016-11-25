@@ -1,6 +1,6 @@
 <template>
-  <div id="index" class="container">
-    <img src="../../assets/logo.png" />
+  <div id="home">
+    <img src="../../../assets/logo.png" />
     <div class="hello">
       <h1>{{ msg }}</h1>
       <h2>Essential Links</h2>
@@ -25,7 +25,7 @@
 
 <script>
 export default {
-  name: 'index',
+  name: 'home',
   data () {
     return {
       msg: 'Welcome to zhoou Vue.js 2.0 App'
@@ -33,8 +33,12 @@ export default {
   }
 }
 </script>
+
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+#home {
+  text-align:center;
+}
 h1, h2 {
   font-weight: normal;
 }

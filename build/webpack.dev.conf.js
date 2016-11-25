@@ -41,7 +41,7 @@ function getEntry(globPath) {
   glob.sync(globPath).forEach(function (entry) {
     basename = path.basename(entry, path.extname(entry));
     tmp = entry.split('/').splice(-3);
-    pathname = tmp.splice(0, 1) + '/' + basename; // 正确输出js和html的路径
+    pathname = tmp.splice(1, 1).toString().toLowerCase() + '/' + basename; // 正确输出js和html的路径
     entries[pathname] = entry;
   });
 
@@ -55,6 +55,7 @@ for (var pathname in pages) {
   var conf = {
     filename: pathname + '.html',
     template: pages[pathname], // 模板路径
+    chunks: [pathname, 'vendors', 'manifest'], // 每个html引用的js模块
     inject: true              // js插入位置
   };
   // 需要生成几个html文件，就配置几个HtmlWebpackPlugin对象
