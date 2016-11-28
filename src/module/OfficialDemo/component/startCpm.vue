@@ -31,14 +31,17 @@
           <demoCmp07></demoCmp07>
         </div>
         <div class="pagelink">
-          <a href="./index.html" class="btn">&lt;&lt;返回主页</a>
-          <a href="./basedemo.html" class="btn">基础篇: base&gt;&gt;</a>
+          <a href="app.html#/" class="btn">&lt;&lt;返回主页</a>
+          <a href="app.html#/basedemo" class="btn">基础篇: base&gt;&gt;</a>
         </div>
       </div>
     </div>
 </template>
 
 <script>
+    import $ from 'jquery'
+    import hljs from 'jspath/highlight.pack.js'
+
     import demoCmp01 from 'components/Start/demoCpm_01'
     import demoCmp02 from 'components/Start/demoCpm_02'
     import demoCmp03 from 'components/Start/demoCpm_03'
@@ -57,6 +60,14 @@
         demoCmp05,
         demoCmp06,
         demoCmp07
+      },
+      mounted () {
+        hljs.initHighlightingOnLoad()
+        $(function () {
+          $('pre code').each(function (i, block) {
+            hljs.highlightBlock(block)
+          })
+        })
       }
     }
 </script>

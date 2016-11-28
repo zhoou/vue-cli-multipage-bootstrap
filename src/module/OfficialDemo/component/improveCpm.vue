@@ -15,14 +15,17 @@
           <transStateCpm></transStateCpm>
         </div>
         <div class="pagelink">
-          <a href="./startdemo.html" class="btn">&lt;&lt;基础篇: base</a>
-          <a href="./advancedemo.html" class="btn">进阶篇：advance&gt;&gt;</a>
+          <a href="app.html#/startdemo" class="btn">&lt;&lt;基础篇: base</a>
+          <a href="app.html#/advancedemo" class="btn">进阶篇：advance&gt;&gt;</a>
         </div>
       </div>
     </div>
 </template>
 
 <script>
+    import $ from 'jquery'
+    import hljs from 'jspath/highlight.pack.js'
+
     import nextTickCpm from 'components/Improve/nextTickCpm'
     import transEffectCpm from 'components/Improve/transEffectCpm'
     import transStateCpm from 'components/Improve/transStateCpm'
@@ -33,6 +36,14 @@
         nextTickCpm,
         transEffectCpm,
         transStateCpm
+      },
+      mounted () {
+        hljs.initHighlightingOnLoad()
+        $(function () {
+          $('pre code').each(function (i, block) {
+            hljs.highlightBlock(block)
+          })
+        })
       }
     }
 </script>

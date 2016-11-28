@@ -23,14 +23,17 @@
           <demoCpm12></demoCpm12>
         </div>
         <div class="pagelink">
-          <a href="./startdemo.html" class="btn">&lt;&lt;基础篇: base</a>
-          <a href="./improvedemo.html" class="btn">提高篇：improve&gt;&gt;</a>
+          <a href="app.html#/startdemo" class="btn">&lt;&lt;基础篇: base</a>
+          <a href="app.html#/improvedemo" class="btn">提高篇：improve&gt;&gt;</a>
         </div>
       </div>
     </div>
 </template>
 
 <script>
+    import $ from 'jquery'
+    import hljs from 'jspath/highlight.pack.js'
+
     import demoCpm08 from 'components/Base/demoCpm_08'
     import demoCpm09 from 'components/Base/demoCpm_09'
     import demoCpm10 from 'components/Base/demoCpm_10'
@@ -45,6 +48,14 @@
         demoCpm10,
         demoCpm11,
         demoCpm12
+      },
+      mounted () {
+        hljs.initHighlightingOnLoad()
+        $(function () {
+          $('pre code').each(function (i, block) {
+            hljs.highlightBlock(block)
+          })
+        })
       }
     }
 </script>

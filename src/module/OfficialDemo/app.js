@@ -5,8 +5,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import appCpm from './appCpm'
-require('assets/css/bootstrap.min.css')
-require('assets/css/Common.css')
+import 'assets/css/bootstrap.min.css'
+import 'assets/css/Common.css'
 
 Vue.use(VueRouter)
 
@@ -15,6 +15,7 @@ const startCpm = resolve => require(['./component/startCpm'], resolve)
 const baseCpm = resolve => require(['./component/baseCpm'], resolve)
 const improveCpm = resolve => require(['./component/improveCpm'], resolve)
 const advanceCmp = resolve => require(['./component/advanceCmp'], resolve)
+const vuexCpm = resolve => require(['./component/vuexCpm'], resolve)
 const errorCpm = resolve => require(['components/Common/errorCpm'], resolve)
 
 const baseUrl = '' // 多页面路径配置
@@ -26,6 +27,7 @@ const routes = [
   {path: baseUrl + '/basedemo', component: baseCpm},
   {path: baseUrl + '/improvedemo', component: improveCpm},
   {path: baseUrl + '/advancedemo', component: advanceCmp},
+  {path: baseUrl + '/vuex', component: vuexCpm},
   {path: '*', component: errorCpm}
 ]
 
@@ -43,5 +45,3 @@ new Vue({ // eslint-disable-line no-new
   router,
   render: page => page(appCpm)
 })
-
-// router.push(baseUrl + '/home')

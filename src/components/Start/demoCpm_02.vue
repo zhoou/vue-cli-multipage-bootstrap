@@ -10,33 +10,42 @@
     <div class="col-xs-4">
       <div class="zero-clipboard"><span class="btn-clipboard">Html</span></div>
       <div class="highlight">
-        <pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span
-          class="string">"app-2"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">span</span> <span
-          class="attr">v-bind:title</span>=<span class="string">"message"</span>&gt;</span></div><div class="line">    Hover your mouse over me for a few seconds to see my dynamically bound title!</div><div
-          class="line">  <span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span
-          class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre>
+        <pre>
+          <code class="html">
+            &lt;div id="app-2"&gt;
+              &lt;span v-bind:title="message"&gt;
+                Hover your mouse over me for a few seconds to see my dynamically bound title!
+              &lt;/span&gt;
+            &lt;/div&gt;
+          </code>
+        </pre>
       </div>
     </div>
     <div class="col-xs-4">
       <div class="zero-clipboard"><span class="btn-clipboard">Js</span></div>
       <div class="highlight">
-        <pre><div class="line"><span class="keyword">var</span> app2 = <span class="keyword">new</span> Vue({</div><div
-          class="line">  <span class="attr">el</span>: <span class="string">'#app-2'</span>,</div><div
-          class="line">  <span class="attr">data</span>: {</div><div class="line">    <span class="attr">message</span>: <span
-          class="string">'You loaded this page on '</span> + <span class="keyword">new</span> <span class="built_in">Date</span>()</div><div
-          class="line">  }</div><div class="line">})</div></pre>
+        <pre>
+          <code class="javascript">
+            var app2 = new Vue({
+              el: '#app-2',
+              data: {
+                message: 'You loaded this page on ' + new Date()
+              }
+            })
+          </code>
+        </pre>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-    export default{
-      name: 'demo02',
-      data () {
-        return {
-          message: 'You loaded this page on ' + new Date()
-        }
+  export default{
+    name: 'demo02',
+    data () {
+      return {
+        message: 'You loaded this page on ' + new Date()
       }
     }
+  }
 </script>

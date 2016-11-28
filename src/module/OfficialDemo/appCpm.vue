@@ -49,7 +49,7 @@ export default {
         },
         {
           isActive: false,
-          linkTo: '/Vuex',
+          linkTo: '/vuex',
           name: 'Vuex'
         }
       ]
@@ -64,18 +64,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
- .slide-left-enter, .slide-right-leave-active {
-  opacity: 0;
-  -webkit-transform: translate(30px, 0);
-  transform: translate(30px, 0);
-  transition: all .2s ease;
-}
-.slide-left-leave-active, .slide-right-enter {
-  opacity: 0;
-  -webkit-transform: translate(-30px, 0);
-  transform: translate(-30px, 0);
-  transition: all .2s ease;
-}
-</style>

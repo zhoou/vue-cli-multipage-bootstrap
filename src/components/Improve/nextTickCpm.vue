@@ -4,20 +4,19 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="demo" v-cloak>
-            <div id="example">{{message}}</div>
+            <div>{{message}}</div>
             <button class="btn btn-info" @click='updateMessage'>Update</button>
           </div>
         </div>
         <div class="col-xs-12">
           <div class="zero-clipboard"><span class="btn-clipboard">Html</span></div>
           <div class="highlight">
-            <pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span
-              class="attr">id</span>=<span class="string">"example"</span>&gt;</span>{{ <label>message</label> }}<span
-              class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span
-              class="tag">&lt;<span class="name">button</span> <span
-              class="attr">class</span>=<span class="string">"btn btn-info" </span><span
-              class="attr">@click</span>=<span class="string">"updateMessage"</span>&gt;</span>Update<span
-              class="tag">&lt;/<span class="name">button</span>&gt;</span></div></pre>
+            <pre>
+              <code class="html">
+                &lt;div id="example"&gt;{{ <label>message</label> }}&lt;/div&gt;
+                &lt;button class="btn btn-info" @click='updateMessage'&gt;Update&lt;/button&gt;
+              </code>
+            </pre>
           </div>
         </div>
       </div>
@@ -25,21 +24,27 @@
     <div class="col-xs-6">
       <div class="zero-clipboard"><span class="btn-clipboard">Js</span></div>
       <div class="highlight">
-        <pre><div class="line">Vue.component(<span class="string">'example'</span>, {</div><div class="line">  <span
-          class="attr">template</span>: <span class="string">'&lt;span&gt;{{ message }}&lt;/span&gt;'</span>,</div><div
-          class="line">  <span class="attr">data</span>: <span class="function"><span
-          class="keyword">function</span> (<span class="params"></span>) </span>{</div><div class="line">    <span
-          class="keyword">return</span> {</div><div class="line">      <span class="attr">message</span>: <span
-          class="string">'not updated'</span></div><div class="line">    }</div><div class="line">  },</div><div
-          class="line">  <span class="attr">methods</span>: {</div><div class="line">    <span class="attr">updateMessage</span>: <span
-          class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{</div><div
-          class="line">      <span class="keyword">this</span>.message = <span class="string">'updated'</span></div><div
-          class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span>.$el.textContent) <span
-          class="comment">// =&gt; 'not updated'</span></div><div class="line">      <span class="keyword">this</span>.$nextTick(<span
-          class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{</div><div
-          class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.$el.textContent) <span
-          class="comment">// =&gt; 'updated'</span></div><div class="line">      })</div><div class="line">    }</div><div
-          class="line">  }</div><div class="line">})</div></pre>
+        <pre>
+          <code class="javascript">
+            Vue.component('example', {
+              template: '&lt;span&gt;{{ <label>message</label> }}&lt;/span&gt;',
+              data: function () {
+                return {
+                  message: 'not updated'
+                }
+              },
+              methods: {
+                updateMessage: function () {
+                  this.message = 'updated'
+                  console.log(this.$el.textContent) // => 'not updated'
+                  this.$nextTick(function () {
+                    console.log(this.$el.textContent) // => 'updated'
+                  })
+                }
+              }
+            })
+          </code>
+        </pre>
       </div>
     </div>
       <vmodal :show='show' @changeState="changeShowState" @okEvent="confirmOk" @cancelEvent="confirmCancle">
