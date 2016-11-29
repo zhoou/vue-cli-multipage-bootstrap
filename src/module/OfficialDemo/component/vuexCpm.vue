@@ -6,12 +6,30 @@
         <h4>最基本的 Vuex 记数应用示例</h4>
         <countCpm></countCpm>
       </div>
+      <div class="bs-example">
+        <h4>Vuex mapState</h4>
+        <mapStateCpm></mapStateCpm>
+      </div>
+      <div class="bs-example">
+        <h4>Vuex Getters</h4>
+        <gettersCpm></gettersCpm>
+      </div>
+      <div class="bs-example">
+        <h4>Vuex Mutations</h4>
+        <mutationsCpm></mutationsCpm>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+  import $ from 'jquery'
+  import hljs from 'jspath/highlight.pack.js'
+
   import countCpm from 'components/Vuex/countApp'
+  import mapStateCpm from 'components/Vuex/mapStateCpm'
+  import gettersCpm from 'components/Vuex/gettersCpm'
+  import mutationsCpm from 'components/Vuex/mutationsCpm'
 
   export default{
     name: 'vuex',
@@ -21,7 +39,18 @@
       }
     },
     components: {
-      countCpm
+      countCpm,
+      mapStateCpm,
+      gettersCpm,
+      mutationsCpm
+    },
+    mounted () {
+      hljs.initHighlightingOnLoad()
+      $(function () {
+        $('pre code').each(function (i, block) {
+          hljs.highlightBlock(block)
+        })
+      })
     }
   }
 </script>

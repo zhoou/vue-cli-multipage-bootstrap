@@ -175,14 +175,14 @@ pre .number, pre .literal {
 }
 .slide-left-enter, .slide-right-leave-active {
   opacity: 0;
-  -webkit-transform: translate(30px, 0);
-  transform: translate(30px, 0);
+  -webkit-transform: translate(10px, 0);
+  /*transform: translate(30px, 0);*/
   transition: all .2s ease;
 }
 .slide-left-leave-active, .slide-right-enter {
   opacity: 0;
-  -webkit-transform: translate(-30px, 0);
-  transform: translate(-30px, 0);
+  -webkit-transform: translate(-10px, 0);
+  /*transform: translate(-30px, 0);*/
   transition: all .2s ease;
 }
 /*

@@ -36,6 +36,8 @@
       <div class="highlight">
         <pre>
           <code class="javascript">
+            import { mapState } from 'vuex'
+
             const store = new Vuex.Store({
               state: {
                 count: 0
@@ -48,11 +50,10 @@
 
             const app = new Vue({
               el: '#app',
-              computed: {
-                count () {
-                  return store.state.count
-                }
-              },
+              computed: mapState({
+                // count: state => state.count 或者以下方法：
+                count: 'count'
+              }),
               methods: {
                 increment () {
                   store.commit('increment')
@@ -70,13 +71,13 @@
 </template>
 
 <script>
+  import { mapState } from 'vuex'
+
   export default {
     name: 'count',
-    computed: {
-      count () {
-        return this.$store.state.countApp_count
-      }
-    },
+    computed: mapState({
+      count: 'countApp_count'
+    }),
     methods: {
       increment () {
         this.$store.commit('countApp_increment')
