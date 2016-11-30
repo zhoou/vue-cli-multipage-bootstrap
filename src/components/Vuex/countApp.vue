@@ -74,15 +74,15 @@
     name: 'count',
     computed: {
       count () {
-        return this.$store.state.countApp_count
+        return this.$store.state.stateDemo.count
       }
     },
     methods: {
       increment () {
-        this.$store.commit('countApp_increment')
+        this.$store.commit('increment')
       },
       decrement () {
-        this.$store.commit('countApp_decrement')
+        this.$store.commit('decrement')
       }
     }
   }

@@ -76,14 +76,14 @@
   export default {
     name: 'count',
     computed: mapState({
-      count: 'countApp_count'
+      count: state => state.stateDemo.count
     }),
     methods: {
       increment () {
-        this.$store.commit('countApp_increment')
+        this.$store.commit('increment')
       },
       decrement () {
-        this.$store.commit('countApp_decrement')
+        this.$store.commit('decrement')
       }
     }
   }

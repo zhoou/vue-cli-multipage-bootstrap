@@ -122,7 +122,7 @@
     },
     computed: {
       ...mapState({
-        result: state => state.actionsData.result
+        result: state => state.actionDemo.result
       }),
       ...mapGetters({
         num1: 'getNumOne',

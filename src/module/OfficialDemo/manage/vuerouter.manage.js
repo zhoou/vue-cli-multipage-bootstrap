@@ -12,6 +12,7 @@ const baseCpm = resolve => require(['../component/baseCpm'], resolve)
 const improveCpm = resolve => require(['../component/improveCpm'], resolve)
 const advanceCmp = resolve => require(['../component/advanceCmp'], resolve)
 const vuexCpm = resolve => require(['../component/vuexCpm'], resolve)
+const exampleCpm = resolve => require(['../component/exampleCpm'], resolve)
 const errorCpm = resolve => require(['components/Common/errorCpm'], resolve)
 
 const baseUrl = '' // 多页面路径配置
@@ -24,6 +25,7 @@ const routes = [
   {path: baseUrl + '/improvedemo', component: improveCpm},
   {path: baseUrl + '/advancedemo', component: advanceCmp},
   {path: baseUrl + '/vuex', component: vuexCpm},
+  {path: baseUrl + '/examples', component: exampleCpm},
   {path: '*', component: errorCpm}
 ]
 

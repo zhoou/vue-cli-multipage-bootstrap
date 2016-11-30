@@ -88,15 +88,15 @@
     },
     computed: {
       ...mapState({
-        result: 'mutations_result'
+        result: state => state.mutationDemo.result
       })
     },
     methods: {
       calculation () {
         let number = parseInt(this.num)
-        this.mutations_Calculation({num: number})
+        this.Calculation({num: number})
       },
-      ...mapMutations(['mutations_Calculation'])
+      ...mapMutations(['Calculation'])
     }
   }
 

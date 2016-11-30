@@ -3,62 +3,37 @@
  */
 import Vue from 'vue'
 import Vuex from 'vuex'
+// import logger from './logger.manage'  // 记录日志 ：logger 插件会生成状态快照，所以仅在开发环境使用。
+
+import StatesModule from '../modules/StatesModule'
+import GettersModule from '../modules/GettersModule'
+import MutationsModule from '../modules/MutationsModule'
+import ActionsModule from '../modules/ActionsModule'
+import ExamplesModule from '../modules/ExamplesModule'
 
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
+  // plugins: [logger],
   state: {
-    countApp_count: 0,
-    mutations_result: 1,
-    actionsData: {
-      numOne: 0,
-      numTwo: 0,
-      result: '请输入结果哦！'
-    },
-    getters_todos: [
-      { id: 1, text: 'vue', done: true },
-      { id: 2, text: 'vue-router', done: false },
-      { id: 3, text: 'vuex', done: true }
+    title: 'Vue.js 从入门到精通效果展示',
+    urlItems: [
+      {linkTo: '/home', name: 'Home'},
+      {linkTo: '/startdemo', name: '入门篇: start'},
+      {linkTo: '/basedemo', name: '基础篇: base'},
+      {linkTo: '/improvedemo', name: '提高篇：improve'},
+      {linkTo: '/advancedemo', name: '进阶篇：advance'},
+      {linkTo: '/vuerouter', name: 'vue-router'},
+      {linkTo: '/vuex', name: 'Vuex'},
+      {linkTo: '/examples', name: '案例：Examples'}
     ]
   },
-  mutations: {
-    countApp_increment: state => state.countApp_count++,
-    countApp_decrement: state => state.countApp_count--,
-    mutations_Calculation (state, payload) {
-      state.mutations_result = 1 + payload.num
-    },
-    mutaCalculationAsync (state, payload) {
-      state.actionsData.result = payload.answer === 'T' ? 'Good!' : 'Sorry!'
-    },
-    mutaClearResult (state) {
-      state.actionsData.result = ''
-    }
-  },
-  // 可以认为是 store 的计算属性
-  getters: {
-    doneTodosCount: state => {
-      return state.getters_todos.filter(item => item.done)
-    },
-    getNumOne: state => {
-      return state.actionsData.numOne + Math.floor(Math.random() * 10 + 1)
-    },
-    getNumTwo: state => {
-      return state.actionsData.numTwo + Math.floor(Math.random() * 10 + 1)
-    }
-  },
-  // Action 提交的是 mutation，而不是直接变更状态。
-  // Action 可以包含任意异步操作。
-  actions: {
-    clearResult ({commit}) {
-      commit('mutaClearResult')
-    },
-    CalculationAsync ({ commit }, answer) {
-      return store.dispatch('clearResult').then(() => {
-        setTimeout(() => {
-          commit('mutaCalculationAsync', answer)
-        }, 500)
-      })
-    }
+  modules: {
+    stateDemo: StatesModule,
+    getterDemo: GettersModule,
+    mutationDemo: MutationsModule,
+    actionDemo: ActionsModule,
+    exampleDemo: ExamplesModule
   }
 })
 

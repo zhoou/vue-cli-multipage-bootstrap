@@ -91,5 +91,4 @@
       doneTodos: 'doneTodosCount'
     })
   }
-
 </script>
