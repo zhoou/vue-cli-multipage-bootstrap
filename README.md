@@ -2,6 +2,10 @@
 
 > A Vue.js2.0 project with Bootstrap which integrated the vue official online examples to components and some components build by myself to anyone who interested in .
 
+<div align="center">
+  <img src="./vue-cli-multipage-bootstrap.png"  alt="vue-cli-multipage-bootstrap" style="width:90%"/>
+</div>
+
 ## Dev Environment
 
 `npm install`
