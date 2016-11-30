@@ -21,9 +21,9 @@
                <code class="html">
                  &lt;p>极简计算器：&lt;/p&gt;
                  &lt;span&gt; 1+
-                 &lt;input v-model="num" type="text" class="form-control" style="width:50px;display: inherit;"&gt;
-                 &lt;button class="btn btn-info" @click='calculation'> = &lt;/button&gt;
-                 {{ <label>result</label> }}
+                   &lt;input v-model="num" type="text"&gt;
+                   &lt;button @click='calculation'> = &lt;/button&gt;
+                   {{ <label>result</label> }}
                  &lt;/span&gt;
                </code>
              </pre>
@@ -36,7 +36,7 @@
       <div class="highlight">
         <pre>
           <code class="javascript">
-            import { mapMutations } from 'vuex'
+            import { mapState, mapMutations } from 'vuex'
 
             const store = new Vuex.Store({
               state: {
@@ -55,6 +55,11 @@
                 return {
                   num: 0
                 }
+              },
+              computed: {
+                ...mapState({
+                  result: 'result'
+                })
               },
               methods: {
                 calculation () {

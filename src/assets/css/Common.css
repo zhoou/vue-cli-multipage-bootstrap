@@ -66,7 +66,7 @@ body>h1{
 .highlight {
     margin-bottom: 14px;
     background-color: #333;
-    border: 1px solid #333;
+    border: 1px solid #eee;
     border-radius: 4px;
     display: block;
     overflow-x: auto;
@@ -81,6 +81,7 @@ body>h1{
     line-height: 1.5em;
     border: 0;
     display: flex;
+    overflow: initial;
 }
 .highlight .line {
     min-height: 1.5em;

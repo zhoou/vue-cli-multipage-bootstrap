@@ -16,17 +16,17 @@
         <div class="col-xs-12">
           <div class="zero-clipboard"><span class="btn-clipboard">Html</span></div>
           <div class="highlight">
-       <pre>
-         <code class="html">
-           &lt;div id="app"&gt;
-            &lt;p&gt;{{ <label>count</label> }}&lt;/p&gt;
-            &lt;p&gt;
-              &lt;button @click="increment"&gt; + &lt;/button&gt;
-              &lt;button @click="decrement"&gt; - &lt;/button&gt;
-            &lt;/p&gt;
-          &lt;/div&gt;
-         </code>
-       </pre>
+           <pre>
+             <code class="html">
+               &lt;div id="app"&gt;
+                &lt;p&gt;{{ <label>count</label> }}&lt;/p&gt;
+                &lt;p&gt;
+                  &lt;button @click="increment"&gt; + &lt;/button&gt;
+                  &lt;button @click="decrement"&gt; - &lt;/button&gt;
+                &lt;/p&gt;
+              &lt;/div&gt;
+             </code>
+           </pre>
           </div>
         </div>
       </div>

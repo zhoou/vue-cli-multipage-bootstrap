@@ -18,6 +18,10 @@
         <h4>Vuex Mutations</h4>
         <mutationsCpm></mutationsCpm>
       </div>
+      <div class="bs-example">
+        <h4>Vuex Actions</h4>
+        <actionsCpm></actionsCpm>
+      </div>
     </div>
   </div>
 </template>
@@ -30,6 +34,7 @@
   import mapStateCpm from 'components/Vuex/mapStateCpm'
   import gettersCpm from 'components/Vuex/gettersCpm'
   import mutationsCpm from 'components/Vuex/mutationsCpm'
+  import actionsCpm from 'components/Vuex/actionsCpm'
 
   export default{
     name: 'vuex',
@@ -42,7 +47,8 @@
       countCpm,
       mapStateCpm,
       gettersCpm,
-      mutationsCpm
+      mutationsCpm,
+      actionsCpm
     },
     mounted () {
       hljs.initHighlightingOnLoad()
