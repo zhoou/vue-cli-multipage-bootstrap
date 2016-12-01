@@ -90,8 +90,8 @@
 </template>
 
 <script>
-  import axios from '../../assets/js/libs/axios.min.js'
-  import lodash from '../../assets/js/libs/lodash.min.js'
+  import axios from 'jspath/libs/axios.min.js'
+  import lodash from 'jspath/libs/lodash.min.js'
 
   export default{
     name: 'demo09',

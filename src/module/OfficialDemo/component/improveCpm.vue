@@ -24,7 +24,7 @@
 
 <script>
     import $ from 'jquery'
-    import hljs from 'jspath/highlight.pack.js'
+    import hljs from 'jspath/libs/highlight.pack.js'
 
     import nextTickCpm from 'components/Improve/nextTickCpm'
     import transEffectCpm from 'components/Improve/transEffectCpm'

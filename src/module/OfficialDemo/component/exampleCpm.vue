@@ -39,7 +39,8 @@
     },
     methods: {
       choiceProjects (url) {
-        window.open(url)
+        let newurl = this.utilHelper.getLocalUrl()
+        window.open(newurl + url)
       }
     }
   }

@@ -40,7 +40,7 @@
 
 <script>
     import $ from 'jquery'
-    import hljs from 'jspath/highlight.pack.js'
+    import hljs from 'jspath/libs/highlight.pack.js'
 
     import demoCmp01 from 'components/Start/demoCpm_01'
     import demoCmp02 from 'components/Start/demoCpm_02'

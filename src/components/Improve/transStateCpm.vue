@@ -111,8 +111,8 @@
 </style>
 
 <script>
-  import TWEEN from '../../assets/js/libs/tween'
-  import Color from '../../assets/js/libs/color'
+  import TWEEN from 'jspath/libs/tween'
+  import Color from 'jspath/libs/color'
 
   export default{
     name: 'transitionModal',

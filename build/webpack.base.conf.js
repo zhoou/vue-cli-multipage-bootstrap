@@ -45,7 +45,7 @@ var webpackBaseConfig = {
       'src': path.resolve(__dirname, '../src'),
       'assets': path.resolve(__dirname, '../src/assets'),
       'components': path.resolve(__dirname, '../src/components'),
-      'jspath': path.resolve(__dirname, '../src/assets/js/libs'),
+      'jspath': path.resolve(__dirname, '../src/assets/js'),
       jquery: path.resolve(__dirname, '../src/assets/js/libs/jquery.min.js'),
       bootstrap: path.resolve(__dirname, '../src/assets/js/libs/bootstrap.min.js')
     }

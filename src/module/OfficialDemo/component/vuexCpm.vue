@@ -32,7 +32,7 @@
 
 <script>
   import $ from 'jquery'
-  import hljs from 'jspath/highlight.pack.js'
+  import hljs from 'jspath/libs/highlight.pack.js'
 
   import countCpm from 'components/Vuex/countApp'
   import mapStateCpm from 'components/Vuex/mapStateCpm'

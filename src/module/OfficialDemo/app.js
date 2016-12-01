@@ -9,6 +9,10 @@ import appCpm from './appCpm'
 import store from './manage/vuex.manage'
 import router from './manage/vuerouter.manage'
 
+import util from 'jspath/common/util'
+
+Vue.prototype.utilHelper = util
+
 new Vue({ // eslint-disable-line no-new
   el: '#app',
   store,
