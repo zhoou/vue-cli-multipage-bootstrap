@@ -14,12 +14,11 @@
 
 ###The initial access path：
 <ul>
-<li>welcome界面： http://localhost:9091/index/index.html</li>
-<li>入门篇： http://localhost:9091/start/startdemo.html</li>
-<li>基础篇： http://localhost:9091/base/basedemo.html</li>
-<li>提高篇： http://localhost:9091/improve/improvedemo.html</li>
-<li>vue-router： http://localhost:9091/officialdemo/app.html</li>
+<li>OfficialDemo： http://localhost:9091/officialdemo.html</li>
+<li>TableHome： http://localhost:9091/tablehome.html</li>
 </ul>
+
+you can click the nav '案例：Examples' and choice 'TableHome' to jump to another project 'tablehome.html'.
 
 ## Prod Environment
 
@@ -29,7 +28,7 @@
 
 Please take the published content to the local server IIS or on another server you like ,
 
-and then the initial access path ：(serverIP)/officialdemo/app.html
+and then the initial access path ：(serverIP)/officialdemo.html
 
 ## Build Setup
 
