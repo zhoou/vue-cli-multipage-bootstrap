@@ -154,20 +154,55 @@ pre .number, pre .literal {
         border-bottom-left-radius: 4px;
     }
 }
-#app {
+.hello {
+  text-align:center
+}
+.hello .link {
+  padding:20px;
+}
+.hello h1,.hello h2 {
+  font-weight: normal;
+}
+
+.hello ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.hello li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+a {
+  color: #42b983;
+}
+.example .items {
+  text-align:center;
+  border:1px solid #42b983;
+  padding:10px;
+  margin-bottom:20px;
+  min-height:104px;
+}
+.example .name {
+  font-size:16px;
+  font-weight:bold;
+  padding-top:10px;
+}
+#app,#table {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   margin-top: 60px;
 }
-#app>h1{
+.container>h1{
   color: #c7254e;
   font-weight: bold;
   margin-bottom: 20px;
   text-align: center;
 }
-#app ul.nav{
+.container ul.nav{
   margin-bottom: 30px;
   background: #eee;
   padding: 10px;

@@ -1,5 +1,5 @@
 <template id="Examples">
-  <div class="panel panel-primary">
+  <div class="panel panel-primary example">
     <div class="panel-heading">{{ headtitle }}</div>
     <div class="panel-body">
       <div class="row">
@@ -13,20 +13,7 @@
     </div>
   </div>
 </template>
-<style scoped>
-  .items {
-    text-align:center;
-    border:1px solid #42b983;
-    padding:10px;
-    margin-bottom:20px;
-    min-height:104px;
-  }
-  .name {
-    font-size:16px;
-    font-weight:bold;
-    padding-top:10px;
-  }
-</style>
+
 <script>
   import { mapState } from 'vuex'
   export default {
@@ -39,8 +26,12 @@
     },
     methods: {
       choiceProjects (url) {
-        let newurl = this.utilHelper.getLocalUrl()
-        window.open(newurl + url)
+        if (url === '') {
+          return null
+        } else {
+          let newurl = this.utilHelper.getLocalUrl()
+          window.open(newurl + url)
+        }
       }
     }
   }

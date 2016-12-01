@@ -65,7 +65,7 @@ var webpackConfig = merge(baseWebpackConfig, {
     // }),
     // split vendor js into its own file
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
+      name: ['main'],
       minChunks: function (module, count) {
         // any required modules inside node_modules are extracted to vendor
         return (
@@ -81,7 +81,7 @@ var webpackConfig = merge(baseWebpackConfig, {
     // prevent vendor hash from being updated whenever app bundle is updated
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest',
-      chunks: ['vendor']
+      chunks: ['main']
     })
   ]
 })
@@ -111,13 +111,13 @@ function getEntry(globPath) {
   glob.sync(globPath).forEach(function (entry) {
     basename = path.basename(entry, path.extname(entry));
     tmp = entry.split('/').splice(-3);
-    pathname = tmp.splice(1, 1).toString().toLowerCase() + '/' + basename; // 正确输出js和html的路径
+    pathname = tmp.splice(1, 1).toString().toLowerCase();
     entries[pathname] = entry;
   });
   return entries;
 }
 
-var pages = getEntry('./src/module/**/*.html');
+var pages = getEntry('./src/module/*/*.html');
 
 for (var pathname in pages) {
   // 配置生成的html文件，定义路径等

@@ -6,14 +6,14 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
-const homeCpm = resolve => require(['../component/homeCpm'], resolve)
-const startCpm = resolve => require(['../component/startCpm'], resolve)
-const baseCpm = resolve => require(['../component/baseCpm'], resolve)
-const improveCpm = resolve => require(['../component/improveCpm'], resolve)
-const advanceCmp = resolve => require(['../component/advanceCmp'], resolve)
-const vuexCpm = resolve => require(['../component/vuexCpm'], resolve)
-const exampleCpm = resolve => require(['../component/exampleCpm'], resolve)
-const errorCpm = resolve => require(['components/Common/errorCpm'], resolve)
+const homeCpm = r => require.ensure([], () => r(require('../component/homeCpm')), 'Official_Home')
+const startCpm = r => require.ensure([], () => r(require('../component/startCpm')), 'Official_Start')
+const baseCpm = r => require.ensure([], () => r(require('../component/baseCpm')), 'Official_Base')
+const improveCpm = r => require.ensure([], () => r(require('../component/improveCpm')), 'Official_Improve')
+const advanceCpm = r => require.ensure([], () => r(require('../component/advanceCmp')), 'Official_Advance')
+const vuexCpm = r => require.ensure([], () => r(require('../component/vuexCpm')), 'Official_Vuex')
+const exampleCpm = r => require.ensure([], () => r(require('../component/exampleCpm')), 'Official_Example')
+const errorCpm = r => require.ensure([], () => r(require('components/Common/errorCpm')), 'error')
 
 const baseUrl = '' // 多页面路径配置
 
@@ -23,7 +23,7 @@ const routes = [
   {path: baseUrl + '/startdemo', component: startCpm},
   {path: baseUrl + '/basedemo', component: baseCpm},
   {path: baseUrl + '/improvedemo', component: improveCpm},
-  {path: baseUrl + '/advancedemo', component: advanceCmp},
+  {path: baseUrl + '/advancedemo', component: advanceCpm},
   {path: baseUrl + '/vuex', component: vuexCpm},
   {path: baseUrl + '/examples', component: exampleCpm},
   {path: '*', component: errorCpm}

@@ -5,7 +5,7 @@ var webpack = require('webpack')
 var projectRoot = path.resolve(__dirname, '../')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var glob = require('glob');
-var entries = getEntry('./src/module/**/*.js'); // 获得入口js文件
+var entries = getEntry('./src/module/*/*.js'); // 获得入口js文件
 
 function getEntry(globPath) {
   var entries = {},
@@ -14,10 +14,9 @@ function getEntry(globPath) {
   glob.sync(globPath).forEach(function (entry) {
     basename = path.basename(entry, path.extname(entry));
     tmp = entry.split('/').splice(-3);
-    pathname = tmp.splice(1, 1).toString().toLowerCase() + '/' + basename; // 正确输出js和html的路径
+    pathname = tmp.splice(1, 1).toString().toLowerCase(); // 正确输出js和html的路径
     entries[pathname] = entry;
   });
-
   return entries;
 }
 
@@ -106,13 +105,12 @@ var webpackBaseConfig = {
     ]
   },
   plugins: [
-    new ExtractTextPlugin('css/styles.css', {allChunks: true}),
+    new ExtractTextPlugin('static/css/styles.css', {allChunks: true}),
     new webpack.ProvidePlugin({
       $: "jquery",
       jQuery: "jquery",
       "window.jQuery": "jquery"
-    }),
-    new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js')
+    })
   ],
   eslint: {
     formatter: require('eslint-friendly-formatter')
