@@ -1,0 +1,30 @@
+.vtb_toptitle h1{
+  text-align: center;
+  font-weight: bold;
+  color: #333;
+  height: 30px;
+  line-height: 30px;
+  font-size: 18px;
+}
+.vtb_title th{
+  text-align: center;
+}
+.vtb_logo{
+  width: 18px;
+}
+.vtb_pager {
+  padding-left: 0;
+  margin: 5px 0;
+  text-align: center;
+  list-style: none;
+}
+.vtb_pager li {
+  display: inline;
+}
+.vtb_pager li>a, .vtb_pager li>span {
+  display: inline-block;
+  padding: 5px 14px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+}

@@ -105,7 +105,7 @@ var webpackBaseConfig = {
     ]
   },
   plugins: [
-    new ExtractTextPlugin('static/css/styles.css', {allChunks: true}),
+    new ExtractTextPlugin('static/css/[name].css', {allChunks: true}),
     new webpack.ProvidePlugin({
       $: "jquery",
       jQuery: "jquery",
@@ -116,7 +116,9 @@ var webpackBaseConfig = {
     formatter: require('eslint-friendly-formatter')
   },
   vue: {
-    loaders: utils.cssLoaders({sourceMap: useCssSourceMap}),
+    // loaders: {
+    //   css: ExtractTextPlugin.extract('style','css')
+    // },
     postcss: [
       require('autoprefixer')({
         browsers: ['last 2 versions']

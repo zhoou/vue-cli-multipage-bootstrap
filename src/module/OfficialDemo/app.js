@@ -4,6 +4,7 @@
 import Vue from 'vue'
 import 'assets/css/bootstrap.min.css'
 import 'assets/css/Common.css'
+import 'assets/css/hljs.css'
 
 import appCpm from './appCpm'
 import store from './manage/vuex.manage'
