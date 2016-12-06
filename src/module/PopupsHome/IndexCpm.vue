@@ -1,5 +1,5 @@
-<template id="alertDemo">
-  <div class="container">
+<template>
+  <div id="table" class="container">
     <h1>{{title}}</h1>
     <ul id="navs" class="nav nav-pills" role="tablist">
       <li v-for='item in urlItems' role="presentation"><router-link :to="item.linkTo">{{ item.name }}</router-link></li>
@@ -13,7 +13,7 @@
 <script>
 import { mapState } from 'vuex'
 export default {
-  name: 'alertDemo',
+  name: 'table',
   computed: {
     ...mapState(['title', 'urlItems'])
   },

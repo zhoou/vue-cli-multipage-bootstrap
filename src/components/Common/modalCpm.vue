@@ -3,7 +3,7 @@
     <div class="modal-mask" v-if="show">
       <div class="modal-confirm">
         <h2 class="confirm-header">
-          <i class="iconfont icon-questioncircle"></i> {{ title }}
+          <i class="iconfont">&#xe72c;</i> {{ title }}
         </h2>
         <div class="confirm-content">
           <slot name="slotA"></slot>

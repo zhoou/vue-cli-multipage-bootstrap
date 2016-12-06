@@ -14,7 +14,7 @@
             <button type="button" class="close" @click="close"><span>&times;</span></button>
             <h4 class="modal-title">
               <slot name="title">
-                {{title}}
+                <i class="iconfont">&#xe72c;</i> {{ title }}
               </slot>
             </h4>
           </div>
@@ -48,7 +48,7 @@ export default {
     },
     title: {
       type: String,
-      default: ''
+      default: '温馨提示！'
     },
     show: {
       required: true,
@@ -147,7 +147,7 @@ export default {
   -moz-transform: scale(0.1);
   -ms-transform: scale(0.1);
   transform: scale(0.1);
-  top: 300px;
+  top: 500;
   opacity: 0;
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
@@ -162,5 +162,10 @@ export default {
   transform: translate3d(0, -300px, 0);
   opacity: 1;
 }
-
+.modal-title {
+   line-height: normal;
+}
+.modal-body {
+  padding:30px;
+}
 </style>
