@@ -52,9 +52,7 @@ export function getJSON (url) {
 }
 
 export function getScrollBarWidth () {
-  console.log(0)
   if (document.documentElement.scrollHeight <= document.documentElement.clientHeight) {
-    console.log(1)
     return 0
   }
   console.log(2)

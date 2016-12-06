@@ -38,6 +38,10 @@ import {coerce, getScrollBarWidth} from 'jspath/common/utils.js'
 import $ from 'jspath/common/nodeList'
 export default {
   props: {
+    name: {
+      type: String,
+      default: 'vModal_' + Math.floor(Math.random() * 1000 + 1)
+    },
     okText: {
       type: String,
       default: 'Save changes'
@@ -57,10 +61,6 @@ export default {
     },
     width: {
       default: null
-    },
-    callback: {
-      type: Function,
-      default () {}
     },
     effect: {
       type: String,
@@ -129,7 +129,11 @@ export default {
       }
     },
     close () {
-      this.$emit('changeState', false)
+      this.$emit('backUpState', {show: false})
+      this.isShow(false)
+    },
+    callback () {
+      this.$emit('backUpState', {show: false, theResult: true, name: this.name})
       this.isShow(false)
     }
   }
@@ -168,4 +172,5 @@ export default {
 .modal-body {
   padding:30px;
 }
+
 </style>

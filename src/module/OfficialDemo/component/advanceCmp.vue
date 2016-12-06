@@ -11,7 +11,7 @@
         <a href="app.html#/improvedemo" class="btn">提高篇：improve&gt;&gt;</a>
       </div>
     </div>
-    <vModal :show='isShow' @changeState="changeShowState">
+    <vModal :show='isShow' @backUpState="changeShowState">
       <div slot="modal-body" class="modal-body">
         Hello, welcome to vue.js learn
       </div>
@@ -25,9 +25,6 @@
       name: 'AdvanceDemo',
       data () {
         return {
-          modalA: {
-
-          },
           isShow: false
         }
       },
@@ -39,7 +36,7 @@
           this.isShow = true
         },
         changeShowState (state) {
-          this.isShow = state
+          this.isShow = state.show
         }
       }
     }

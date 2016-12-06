@@ -28,7 +28,7 @@ export default {
   props: {
     name: {
       type: String,
-      default: 'vAlert_' + Math.floor(Math.random() * 100 + 1)
+      default: 'vAlert_' + Math.floor(Math.random() * 1000 + 1)
     },
     type: {
       type: String

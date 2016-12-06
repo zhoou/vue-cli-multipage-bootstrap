@@ -8,6 +8,7 @@ Vue.use(VueRouter)
 
 const homeCpm = r => require.ensure([], () => r(require('../component/homeCpm')), 'Popup_Home')
 const alertCpm = r => require.ensure([], () => r(require('../component/alertCpm')), 'Popup_alert')
+const modalCpm = r => require.ensure([], () => r(require('../component/modalCpm')), 'Popup_modal')
 const errorCpm = r => require.ensure([], () => r(require('components/Common/errorCpm')), 'error')
 
 const baseUrl = '' // 多页面路径配置
@@ -16,6 +17,7 @@ const routes = [
   {path: baseUrl + '/', redirect: baseUrl + '/home'},
   {path: baseUrl + '/home', component: homeCpm},
   {path: baseUrl + '/alertDemo', component: alertCpm},
+  {path: baseUrl + '/modalDemo', component: modalCpm},
   {path: '*', component: errorCpm}
 ]
 
