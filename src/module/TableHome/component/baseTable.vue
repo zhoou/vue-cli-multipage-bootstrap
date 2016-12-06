@@ -3,10 +3,6 @@
     <div class="panel-heading">{{ title }}</div>
     <div class="panel-body">
       <div class="bs-example">
-        <h4>表</h4>
-        <tab01></tab01>
-      </div>
-      <div class="bs-example">
         <h4>课程表</h4>
         <vTable :configs='settings'></vTable>
       </div>
@@ -15,7 +11,6 @@
 </template>
 
 <script>
-  import tab01 from 'components/Table/tab01'
   import vTable from 'components/Common/vTable'
   export default {
     name: 'basetable',
@@ -45,11 +40,11 @@
             pager: 'vtb_pager'
           }
         },
-        title: 'Table 基础'
+        title: 'Table 基础',
+        isShow: false
       }
     },
     components: {
-      tab01,
       vTable
     }
   }

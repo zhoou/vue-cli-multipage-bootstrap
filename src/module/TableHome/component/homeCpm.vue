@@ -20,7 +20,6 @@
     methods: {
       goPage (url) {
         let hosts = this.utilHelper.getLocalUrl()
-        console.log(hosts)
         window.open(hosts + url)
       }
     }

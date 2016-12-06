@@ -10,6 +10,7 @@ import GettersModule from '../modules/GettersModule'
 import MutationsModule from '../modules/MutationsModule'
 import ActionsModule from '../modules/ActionsModule'
 import ExamplesModule from '../modules/ExamplesModule'
+import AdvanceModule from '../modules/AdvanceModule'
 
 Vue.use(Vuex)
 
@@ -33,7 +34,8 @@ const store = new Vuex.Store({
     getterDemo: GettersModule,
     mutationDemo: MutationsModule,
     actionDemo: ActionsModule,
-    exampleDemo: ExamplesModule
+    exampleDemo: ExamplesModule,
+    advanceDemo: AdvanceModule
   }
 })
 
