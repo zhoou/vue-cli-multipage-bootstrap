@@ -47,16 +47,16 @@
         </pre>
       </div>
     </div>
-      <vmodal :show='show' @changeState="changeShowState" @okEvent="confirmOk" @cancelEvent="confirmCancle">
-        <div slot="slotA">
-          <p>{{content}}</p>
-        </div>
-      </vmodal>
+    <vmodal :show='show' name='modalB' effect="feed" :width="400" @backUpState="receiveChildState">
+      <div slot="modal-body" class="modal-body">
+        {{ content }}
+      </div>
+    </vmodal>
   </div>
 </template>
 
 <script>
-    import vmodal from 'components/Common/modalCpm'
+    import vmodal from 'components/Common/vModal'
 
     export default{
       name: 'nextTick',
@@ -78,14 +78,12 @@
             this.show = true
           })
         },
-        changeShowState (state) {
-          this.show = state
-        },
-        confirmOk () {
-          this.message = 'you are very Good !'
-        },
-        confirmCancle () {
-          this.message = 'you click "取消" button !'
+        receiveChildState (state) {
+          let isShow = state.show
+          this.show = isShow
+          if (state.theResult) {
+            this.message = 'you are very Good !'
+          }
         }
       }
     }

@@ -1,5 +1,5 @@
 /**
- * Created by zhoou on 2016/12/6.
+ * Created by zhoou on 2016/12/7.
  */
 import Vue from 'vue'
 import 'assets/css/bootstrap.min.css'
@@ -14,7 +14,7 @@ import util from 'jspath/common/util'
 Vue.prototype.utilHelper = util
 
 new Vue({ // eslint-disable-line no-new
-  el: '#popuphome',
+  el: '#carousel',
   store,
   router,
   render: page => page(IndexCpm)

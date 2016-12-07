@@ -17,7 +17,7 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   // plugins: [logger],
   state: {
-    title: 'Vue.js 从入门到精通效果展示',
+    title: 'Vue2.0 从入门到精通效果展示',
     urlItems: [
       {linkTo: '/home', name: 'Home'},
       {linkTo: '/startdemo', name: '入门篇: start'},

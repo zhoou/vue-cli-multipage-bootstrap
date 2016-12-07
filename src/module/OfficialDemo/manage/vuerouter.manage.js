@@ -13,7 +13,7 @@ const improveCpm = r => require.ensure([], () => r(require('../component/improve
 const advanceCpm = r => require.ensure([], () => r(require('../component/advanceCmp')), 'Official_Advance')
 const vuexCpm = r => require.ensure([], () => r(require('../component/vuexCpm')), 'Official_Vuex')
 const exampleCpm = r => require.ensure([], () => r(require('../component/exampleCpm')), 'Official_Example')
-const errorCpm = r => require.ensure([], () => r(require('components/Common/errorCpm')), 'error')
+const errorCpm = r => require.ensure([], () => r(require('components/Common/vError')), 'error')
 
 const baseUrl = '' // 多页面路径配置
 

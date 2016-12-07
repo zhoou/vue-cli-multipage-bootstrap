@@ -10,7 +10,7 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   // plugins: [logger],
   state: {
-    title: 'Vue.js Table Space 表格空间走廊',
+    title: 'Vue2.0 Table Space 表格空间走廊',
     urlItems: [
       {linkTo: '/home', name: 'Home'},
       {linkTo: '/basetable', name: '基础篇: base'},

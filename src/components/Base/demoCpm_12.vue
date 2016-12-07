@@ -51,34 +51,16 @@
         </pre>
       </div>
     </div>
-    <vmodal :show='show' v-on:changeState="changeShowState">
-      <div slot="slotA">
-        <p>请选择跟进方式: </p>
-        <p>
-          <label><input type="radio" name="followType" v-model="followType" value="1"> 电话跟进</label><br>
-          <label><input type="radio" name="followType" v-model="followType" value="2"> 上门跟进</label>
-        </p>
-      </div>
-      <div slot="slotB">
-        <p>
-          <input type="checkbox" v-model="abandonReasons" value="1">信息不真实
-          <input type="checkbox" v-model="abandonReasons" value="2">没有实体店
-          <input type="checkbox" v-model="abandonReasons" value="3">恶意注册
-        </p>
-      </div>
-      <div slot="slotC">
-        <p>告诉我们为啥要删除它: </p>
-        <p>
-          姓名: <input type="text" v-model="name"> <br>
-          原因: <input type="text" v-model="reason">
-        </p>
+    <vmodal :show='show' name='modalB' effect="zoom" :width="400" @backUpState="receiveChildState">
+      <div slot="modal-body" class="modal-body">
+        Hello, welcome to vue.js learn
       </div>
     </vmodal>
   </div>
 </template>
 
 <script>
-  import vmodal from 'components/Common/modalCpm'
+  import vmodal from 'components/Common/vModal'
 
   export default{
     name: 'demo12',
@@ -98,8 +80,9 @@
         // 'alerts('Hello ' + this.name + '!'+' event.target.tagName:'+event.target.tagName)'
         this.show = true
       },
-      changeShowState (state) {
-        this.show = state
+      receiveChildState (state) {
+        let isShow = state.show
+        this.show = isShow
       }
     }
   }

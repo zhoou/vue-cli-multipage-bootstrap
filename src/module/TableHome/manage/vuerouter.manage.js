@@ -8,7 +8,7 @@ Vue.use(VueRouter)
 
 const homeCpm = r => require.ensure([], () => r(require('../component/homeCpm')), 'Table_Home')
 const baseTable = r => require.ensure([], () => r(require('../component/baseTable')), 'Table_Base')
-const errorCpm = r => require.ensure([], () => r(require('components/Common/errorCpm')), 'error')
+const errorCpm = r => require.ensure([], () => r(require('components/Common/vError')), 'error')
 
 const baseUrl = '' // 多页面路径配置
 

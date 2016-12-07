@@ -6,9 +6,9 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
-const homeCpm = r => require.ensure([], () => r(require('../component/homeCpm')), 'Popup_Home')
-const alertCpm = r => require.ensure([], () => r(require('../component/alertCpm')), 'Popup_alert')
-const modalCpm = r => require.ensure([], () => r(require('../component/modalCpm')), 'Popup_modal')
+const homeCpm = r => require.ensure([], () => r(require('../component/homeCpm')), 'carousel_Home')
+const bootCarousel = r => require.ensure([], () => r(require('../component/bootCarousel')), 'carousel_boot')
+const vmaCarousel = r => require.ensure([], () => r(require('../component/vmaCarousel')), 'carousel_vma')
 const errorCpm = r => require.ensure([], () => r(require('components/Common/vError')), 'error')
 
 const baseUrl = '' // 多页面路径配置
@@ -16,8 +16,8 @@ const baseUrl = '' // 多页面路径配置
 const routes = [
   {path: baseUrl + '/', redirect: baseUrl + '/home'},
   {path: baseUrl + '/home', component: homeCpm},
-  {path: baseUrl + '/alertDemo', component: alertCpm},
-  {path: baseUrl + '/modalDemo', component: modalCpm},
+  {path: baseUrl + '/bootstrapDemo', component: bootCarousel},
+  {path: baseUrl + '/vmaDemo', component: vmaCarousel},
   {path: '*', component: errorCpm}
 ]
 

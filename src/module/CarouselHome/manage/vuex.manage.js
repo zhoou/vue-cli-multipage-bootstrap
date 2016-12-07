@@ -10,11 +10,13 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   // plugins: [logger],
   state: {
-    title: 'Vue2.0 Pop-ups Space 弹框空间走廊',
+    title: 'Vue2.0 Carousel Space 轮播空间走廊',
     urlItems: [
       {linkTo: '/home', name: 'Home'},
-      {linkTo: '/alertDemo', name: 'Alert 弹窗'},
-      {linkTo: '/modalDemo', name: 'Modal 弹窗'}
+      {linkTo: '/bootstrapDemo', name: 'Bootstrap 轮播'},
+      {linkTo: '/vmaDemo', name: '轮播：类型A'},
+      {linkTo: '/vmbDemo', name: '轮播：类型B'},
+      {linkTo: '/vmcDemo', name: '轮播：类型C'}
     ]
   },
   modules: {
