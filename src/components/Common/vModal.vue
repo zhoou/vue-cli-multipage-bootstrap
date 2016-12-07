@@ -129,7 +129,7 @@ export default {
       }
     },
     close () {
-      this.$emit('backUpState', {show: false})
+      this.$emit('backUpState', {show: false, name: this.name})
       this.isShow(false)
     },
     callback () {
@@ -151,19 +151,19 @@ export default {
   -moz-transform: scale(0.1);
   -ms-transform: scale(0.1);
   transform: scale(0.1);
-  top: 500;
+  top: 300;
   opacity: 0;
-  -webkit-transition: all 0.3s;
-  -moz-transition: all 0.3s;
-  transition: all 0.3s;
+  -webkit-transition: all 1.3s;
+  -moz-transition: all 1.3s;
+  transition: all 1.3s;
 }
 .modal.zoom.in .modal-dialog {
   -webkit-transform: scale(1);
   -moz-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
-  -webkit-transform: translate3d(0, -300px, 0);
-  transform: translate3d(0, -300px, 0);
+  -webkit-transform: translate3d(0, 300px, 0);
+  transform: translate3d(0, 300px, 0);
   opacity: 1;
 }
 .modal-title {

@@ -48,7 +48,8 @@
     name: 'alertCpm',
     data () {
       return {
-        title: 'Alert 弹框',
+        title: 'Alert 弹框 -- Demo',
+        title2: 'Alert 弹框 -- Coding',
         showTop: false,
         showRight: false,
         showA: false,
