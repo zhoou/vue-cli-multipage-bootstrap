@@ -3,8 +3,15 @@
 > A Vue.js2.0 project with Bootstrap which integrated the vue official online examples to components and some components build by myself to anyone who interested in .
 
 <div align="center">
-  <img src="./vue-cli-multipage-bootstrap.png"  alt="vue-cli-multipage-bootstrap" style="width:90%"/>
+  <img src="./vue-cli-multipage-bootstrap.gif"  alt="vue-cli-multipage-bootstrap" style="width:90%"/>
 </div>
+
+## Components
+* [Alert 组件](/src/components/Common/vAlert)
+* [Modal 组件](/src/components/Common/vModal)
+* [Table 组件](/src/components/Common/vTable)
+* [Table 组件](/src/components/Common/vTable)
+* [Carousel 组件](/src/components/Common/vCarousel)
 
 ## Dev Environment
 
@@ -16,6 +23,8 @@
 <ul>
 <li>OfficialDemo： http://localhost:9091/officialdemo.html</li>
 <li>TableHome： http://localhost:9091/tablehome.html</li>
+<li>PopupsHome： http://localhost:9091/popupshome.html</li>
+<li>CarouselHome： http://localhost:9091/carouselhome.html</li>
 </ul>
 
 you can click the nav '案例：Examples' and choice 'TableHome' to jump to another project 'tablehome.html'.
