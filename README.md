@@ -7,11 +7,11 @@
 </div>
 
 ## Components
-* [Alert 组件](/src/components/Common/vAlert)
-* [Modal 组件](/src/components/Common/vModal)
-* [Table 组件](/src/components/Common/vTable)
-* [Table 组件](/src/components/Common/vTable)
-* [Carousel 组件](/src/components/Common/vCarousel)
+* [Alert 组件](/src/components/Common/vAlert.vue)
+* [Modal 组件](/src/components/Common/vModal.vue)
+* [Table 组件](/src/components/Common/vTable.vue)
+* [Carousel 组件](/src/components/Common/vCarousel.vue)
+* [Error 组件](/src/components/Common/vError.vue)
 
 ## Dev Environment
 
