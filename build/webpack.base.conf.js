@@ -46,7 +46,8 @@ var webpackBaseConfig = {
       'components': path.resolve(__dirname, '../src/components'),
       'jspath': path.resolve(__dirname, '../src/assets/js'),
       jquery: path.resolve(__dirname, '../src/assets/js/libs/jquery.min.js'),
-      bootstrap: path.resolve(__dirname, '../src/assets/js/libs/bootstrap.min.js')
+      bootstrap: path.resolve(__dirname, '../src/assets/js/libs/bootstrap.min.js'),
+      modernizr: path.resolve(__dirname,'../src/assets/js/libs/modernizr.custom.css3.js')
     }
   },
   resolveLoader: {
@@ -101,6 +102,10 @@ var webpackBaseConfig = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
+      },
+      {
+        test: /(modernizr)(\.\w+)*\.js$/,
+        loader: "imports?this=>window!exports?window.Modernizr"
       }
     ]
   },

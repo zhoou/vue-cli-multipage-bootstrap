@@ -189,7 +189,7 @@ a {
   font-weight:bold;
   padding-top:10px;
 }
-#app,#table {
+#app,#table,#carousel,#popuphome {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
