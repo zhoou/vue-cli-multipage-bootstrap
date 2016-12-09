@@ -124,6 +124,9 @@ pre .number, pre .literal {
     overflow-x: scroll;
     overflow-y: scroll;
 }
+.highdemo{
+  height: 560px;
+}
 [v-cloak] {
     display: none;
 }

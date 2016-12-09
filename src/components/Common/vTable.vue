@@ -14,6 +14,11 @@
         <th v-if="showLogo" :class="css.titleClass">{{ index }}</th>
         <td v-for="(item, index2) in ritem" :class="css.colColor[index2]"> {{ item }}</td>
       </tr>
+      <tr v-if="showNoData">
+        <td :colspan="colspanNum+1" style="text-align:center;background-color:#eee">
+          <small>No data</small>
+        </td>
+      </tr>
       <tr v-if="isNote">
         <th v-if="showLogo" :class="css.titleClass">备<br>注</th>
         <td :colspan="colspanNum" class="bg-ss">{{ notes }}</td>
@@ -56,13 +61,21 @@
         notes: this.configs.notes,   // 备注信息
         css: this.configs.css,       // 加载样式
         showLogo: this.configs.showLogo,  // 是否显示含logo的列
-        showTab: this.configs.showTab   // 显示分页
+        showTab: this.configs.showTab,   // 显示分页
+        showNoData: false  // 无数据时显示的内容
       }
     },
     computed: {
       colspanNum () {
         return this.tbheads ? this.tbheads.length : 0
       }
+    },
+    mounted () {
+      this.$nextTick(function () { // 保证 this.$el 已经插入文档
+        if (this.tbdata === null || this.tbdata === undefined) {
+          this.showNoData = true
+        }
+      })
     }
   }
 </script>
