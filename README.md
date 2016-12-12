@@ -3,7 +3,7 @@
 > A Vue.js2.0 project with Bootstrap which integrated the vue official online examples to components and some components build by myself to anyone who interested in .
 
 <div align="center">
-  <img src="https://github.com/zhoou/DataSource/tree/master/images/vue-cli-multipage-bootstrap.gif"  alt="vue-cli-multipage-bootstrap" style="width:90%"/>
+  <img src="https://github.com/zhoou/DataSource/blob/master/images/vue-cli-multipage-bootstrap.gif?raw=true"  alt="vue-cli-multipage-bootstrap" style="width:90%"/>
 </div>
 
 ## Components
@@ -69,5 +69,97 @@ npm run e2e
 # run all tests
 npm test
 ```
+## 多页面配置
 
+#### webpack.base.conf.js 配置：
+<pre><code>
+var entries = getEntry('./src/module/*/*.js'); // 获得入口js文件
+
+function getEntry(globPath) {
+  var entries = {},
+    basename, tmp, pathname;
+
+  glob.sync(globPath).forEach(function (entry) {
+    basename = path.basename(entry, path.extname(entry));
+    tmp = entry.split('/').splice(-3);
+    pathname = tmp.splice(1, 1).toString().toLowerCase(); // 正确输出js和html的路径
+    entries[pathname] = entry;
+  });
+  return entries;
+}
+</code></pre>
+其中入口entry修改成如下：
+<pre><code>
+entry: Object.assign(entries,{
+    vendors : ['jquery', 'bootstrap']
+  })
+ </code></pre>
+
+#### webpack.dev.conf.js 配置：
+<pre><code>
+function getEntry(globPath) {
+  var entries = {},
+    basename, tmp, pathname;
+
+  glob.sync(globPath).forEach(function (entry) {
+    basename = path.basename(entry, path.extname(entry));
+    tmp = entry.split('/').splice(-3);
+    pathname = tmp.splice(1, 1).toString().toLowerCase();
+    entries[pathname] = entry;
+  });
+
+  return entries;
+}
+
+var pages = getEntry('./src/module/**/*.html');
+
+for (var pathname in pages) {
+  // 配置生成的html文件，定义路径等
+  var conf = {
+    filename: pathname + '.html',
+    template: pages[pathname], // 模板路径
+    inject: true              // js插入位置
+  };
+  // 需要生成几个html文件，就配置几个HtmlWebpackPlugin对象
+  module.exports.plugins.push(new HtmlWebpackPlugin(conf));
+}
+</code></pre>
+ 
+#### webpack.prod.conf.js 配置：
+ <pre><code>
+ function getEntry(globPath) {
+  var entries = {},
+    basename, tmp, pathname;
+
+  glob.sync(globPath).forEach(function (entry) {
+    basename = path.basename(entry, path.extname(entry));
+    tmp = entry.split('/').splice(-3);
+    pathname = tmp.splice(1, 1).toString().toLowerCase();
+    entries[pathname] = entry;
+  });
+  return entries;
+}
+var pages = getEntry('./src/module/*/*.html');
+for (var pathname in pages) {
+  // 配置生成的html文件，定义路径等
+  var conf = {
+    filename: pathname + '.html',
+    template: pages[pathname], // 模板路径
+    inject: true,              // js插入位置
+    minify: {
+      removeComments: true,
+      collapseWhitespace: true,
+      removeAttributeQuotes: true
+      // more options:
+      // https://github.com/kangax/html-minifier#options-quick-reference
+    },
+    // necessary to consistently work with multiple chunks via CommonsChunkPlugin
+    chunksSortMode: 'dependency'
+  };
+  // 需要生成几个html文件，就配置几个HtmlWebpackPlugin对象
+  webpackConfig.plugins.push(new HtmlWebpackPlugin(conf));
+}
+</code></pre>
+ 
+ 
 Welcome guidance ！！
