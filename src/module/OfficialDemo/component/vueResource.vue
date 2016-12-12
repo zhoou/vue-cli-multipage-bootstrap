@@ -14,6 +14,10 @@
         <h4>Http Post 实例</h4>
         <post-resource></post-resource>
       </div>
+      <div class="bs-example">
+        <h4>Http Put 实例</h4>
+        <put-resource></put-resource>
+      </div>
     </div>
   </div>
 </template>
@@ -24,6 +28,7 @@
   import getResource from 'components/VueResource/GetResource'
   import jsonpResource from 'components/VueResource/jsonpResource'
   import postResource from 'components/VueResource/postResource'
+  import putResource from 'components/VueResource/putResource'
   export default {
     data () {
       return {
@@ -33,7 +38,8 @@
     components: {
       getResource,
       jsonpResource,
-      postResource
+      postResource,
+      putResource
     },
     mounted () {
       hljs.initHighlightingOnLoad()

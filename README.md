@@ -3,15 +3,15 @@
 > A Vue.js2.0 project with Bootstrap which integrated the vue official online examples to components and some components build by myself to anyone who interested in .
 
 <div align="center">
-  <img src="./vue-cli-multipage-bootstrap.gif"  alt="vue-cli-multipage-bootstrap" style="width:90%"/>
+  <img src="https://github.com/zhoou/DataSource/tree/master/images/vue-cli-multipage-bootstrap.gif"  alt="vue-cli-multipage-bootstrap" style="width:90%"/>
 </div>
 
 ## Components
-* [Alert 组件](/src/components/Common/vAlert.vue)
-* [Modal 组件](/src/components/Common/vModal.vue)
-* [Table 组件](/src/components/Common/vTable.vue)
-* [Carousel 组件](/src/components/Common/vCarousel.vue)
-* [Error 组件](/src/components/Common/vError.vue)
+* [Alert 组件](/src/components/Common/vAlert)
+* [Modal 组件](/src/components/Common/vModal)
+* [Table 组件](/src/components/Common/vTable)
+* [Table 组件](/src/components/Common/vTable)
+* [Carousel 组件](/src/components/Common/vCarousel)
 
 ## Dev Environment
 

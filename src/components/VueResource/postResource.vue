@@ -75,25 +75,25 @@
         <div class="form-group" style="display: none;">
           <label class="col-sm-4 control-label">Customer Id</label>
           <div class="col-sm-6">
-            <input id="Id" type="text" disabled="disabled" class="form-control">
+            <input v-model="item.customerId" type="text" disabled="disabled" class="form-control">
           </div>
         </div>
         <div class="form-group">
           <label class="col-sm-4 control-label">Company Name</label>
           <div class="col-sm-6">
-            <input id="companyName" type="text" class="form-control">
+            <input v-model="item.companyName" type="text" class="form-control">
           </div>
         </div>
         <div class="form-group">
           <label class="col-sm-4 control-label">Contact Name</label>
           <div class="col-sm-6">
-            <input id="contactName" type="text" class="form-control">
+            <input v-model="item.contactName" type="text" class="form-control">
           </div>
         </div>
         <div class="form-group">
           <label class="col-sm-4 control-label">Phone</label>
           <div class="col-sm-6">
-            <input id="phone" type="text" class="form-control">
+            <input v-model="item.phone" type="text" class="form-control">
           </div>
         </div>
       </div>
@@ -101,7 +101,6 @@
   </div>
 </template>
 <script>
-  import $ from 'jquery'
   import vModal from 'components/Common/vModal'
   export default {
     data () {
@@ -155,11 +154,6 @@
         if (state != null) {
           self.showDialog = state.show
           if (state.theResult) {
-            self.item = {
-              companyName: $('#companyName').val(),
-              contactName: $('#contactName').val(),
-              phone: $('#phone').val()
-            }
             self.createData()
           }
         }
