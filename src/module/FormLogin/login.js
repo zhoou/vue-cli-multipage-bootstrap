@@ -3,7 +3,7 @@
  */
 
 import Vue from 'vue'
-import VueValidate from 'vue-validator'
+import validator from 'vue-validator'
 import 'assets/css/bootstrap.min.css'
 import 'assets/css/Common.css'
 
@@ -15,7 +15,7 @@ import util from 'jspath/common/util'
 
 Vue.prototype.utilHelper = util
 
-Vue.use(VueValidate)
+Vue.use(validator)
 
 new Vue({ // eslint-disable-line no-new
   el: '#login',

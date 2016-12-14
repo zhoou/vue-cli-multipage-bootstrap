@@ -3,15 +3,17 @@
 > A Vue.js2.0 project with Bootstrap which integrated the vue official online examples to components and some components build by myself to anyone who interested in .
 
 <div align="center">
-  <img src="https://github.com/zhoou/DataSource/blob/master/images/vue-cli-multipage-bootstrap.gif?raw=true"  alt="vue-cli-multipage-bootstrap" style="width:90%"/>
+  <img src="https://github.com/zhoou/DataSource/blob/master/images/vue-cli-multipage-bootstrap.gif?raw=true"  alt="vue-cli-multipage-bootstrap"/>
 </div>
 
 ## Components
-* [Alert 组件](/src/components/Common/vAlert)
-* [Modal 组件](/src/components/Common/vModal)
-* [Table 组件](/src/components/Common/vTable)
-* [Table 组件](/src/components/Common/vTable)
-* [Carousel 组件](/src/components/Common/vCarousel)
+* [Alert 组件](/src/components/Common/vAlert.vue)
+* [Modal 组件](/src/components/Common/vModal.vue)
+* [Table 组件](/src/components/Common/vTable.vue)
+* [Carousel 组件](/src/components/Common/vCarousel.vue)
+* [Loading 组件](/src/components/Common/vLoading.vue)
+* [Login 组件](/src/components/Common/vLogin.vue)
+* [Error 组件](/src/components/Common/vError.vue)
 
 ## Dev Environment
 
@@ -25,6 +27,7 @@
 <li>TableHome： http://localhost:9091/tablehome.html</li>
 <li>PopupsHome： http://localhost:9091/popupshome.html</li>
 <li>CarouselHome： http://localhost:9091/carouselhome.html</li>
+<li>FormLogin： http://localhost:9091/formlogin.html</li>
 </ul>
 
 you can click the nav '案例：Examples' and choice 'TableHome' to jump to another project 'tablehome.html'.
