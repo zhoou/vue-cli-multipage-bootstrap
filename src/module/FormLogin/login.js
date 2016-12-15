@@ -3,9 +3,9 @@
  */
 
 import Vue from 'vue'
-import validator from 'vue-validator'
 import 'assets/css/bootstrap.min.css'
 import 'assets/css/Common.css'
+import 'bootstrap-validator'
 
 import formCpm from './formCpm'
 import store from './manage/vuex.manage'
@@ -14,8 +14,6 @@ import router from './manage/vuerouter.manage'
 import util from 'jspath/common/util'
 
 Vue.prototype.utilHelper = util
-
-Vue.use(validator)
 
 new Vue({ // eslint-disable-line no-new
   el: '#login',

@@ -1,18 +1,18 @@
 <template id="login">
   <form role="form" class="loginform" data-toggle="validator">
-    <p>Login</p>
+    <p>{{ title }}</p>
     <div class="content">
       <div class="form-group">
         <div class="input-group">
           <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
-            <input type="email" class="form-control" id="username" placeholder="Enter email" required pattern="^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$">
+            <input type="email" v-model="item.username" class="form-control" placeholder="Enter email" required pattern="^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$">
         </div>
         <div class="help-block with-errors"></div>
       </div>
       <div class="form-group">
         <div class="input-group">
           <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
-          <input type="password" class="form-control" id="password1" placeholder="Password" >
+          <input type="password" v-model="item.password" class="form-control" placeholder="Password" >
         </div>
         <div class="help-block with-errors"></div>
       </div>
@@ -28,14 +28,26 @@
   import 'bootstrap-validator'
   export default {
     name: 'login',
+    props: {
+      loginApi: {
+        type: String
+      }
+    },
     data () {
       return {
-        // coding...
+        title: 'Login',
+        item: {}
       }
     },
     methods: {
       btnSubmit () {
-        console.log('success!')
+        let self = this
+        console.log('success! The Login Api : ' + self.loginApi)
+        self.$http.post(self.loginApi, self.item).then((response) => {
+          self.item = {}
+          // success coding...
+        })
+        self.$emit('backSubmit', {accesstoken: 'qweasdasefsdcfsdfsdf123asdasd'})
       }
     }
   }
