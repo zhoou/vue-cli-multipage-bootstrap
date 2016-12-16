@@ -5,7 +5,6 @@
 import Vue from 'vue'
 import 'assets/css/bootstrap.min.css'
 import 'assets/css/Common.css'
-import 'bootstrap-validator'
 
 import formCpm from './formCpm'
 import store from './manage/vuex.manage'

@@ -7,6 +7,7 @@
   </div>
 </template>
 <script>
+  import 'bootstrap-validator'
   import vLogin from 'components/Common/vLogin'
   export default {
     data () {

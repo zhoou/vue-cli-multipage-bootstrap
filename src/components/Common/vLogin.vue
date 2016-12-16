@@ -1,5 +1,5 @@
 <template id="login">
-  <form role="form" class="loginform" data-toggle="validator">
+  <form role="form" class="loginform" id="loginForm">
     <p>{{ title }}</p>
     <div class="content">
       <div class="form-group">
@@ -25,7 +25,7 @@
 </template>
 
 <script>
-  import 'bootstrap-validator'
+  import $ from 'jquery'
   export default {
     name: 'login',
     props: {
@@ -46,9 +46,20 @@
         self.$http.post(self.loginApi, self.item).then((response) => {
           self.item = {}
           // success coding...
+          let token = ''
+          if (response && response.data){
+            token =
+          }
+          self.$emit('backSubmit', {accesstoken: 'qweasdasefsdcfsdfsdf123asdasd'})
+        }, (response) => {
+          self.$emit('backSubmit', {accesstoken: 'ERROR!'})
+        }).catch(function (response) {
+          console.log(response)
         })
-        self.$emit('backSubmit', {accesstoken: 'qweasdasefsdcfsdfsdf123asdasd'})
       }
+    },
+    mounted () {
+      $('#loginForm').validator()
     }
   }
 </script>
