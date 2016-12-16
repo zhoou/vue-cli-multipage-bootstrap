@@ -14,8 +14,7 @@ const store = new Vuex.Store({
     urlItems: [
       {linkTo: '/home', name: 'Home'},
       {linkTo: '/basetable', name: '基础篇: base'},
-      {linkTo: '/multiheader', name: '多表头：Multi-header Table'},
-      {linkTo: '/tablefrozen', name: '固定行列：Table Frozen'}
+      {linkTo: '/easytable', name: 'EasyTable', isDropdown: true}
     ]
   },
   modules: {

@@ -12,7 +12,7 @@
       <div class="form-group">
         <div class="input-group">
           <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
-          <input type="password" v-model="item.password" class="form-control" placeholder="Password" >
+          <input type="password" v-model="item.password" class="form-control" placeholder="Password" required>
         </div>
         <div class="help-block with-errors"></div>
       </div>
@@ -47,10 +47,11 @@
           self.item = {}
           // success coding...
           let token = ''
-          if (response && response.data){
-            token =
+          if (response && response.data) {
+            let now = new Date()
+            token = self.utilHelper.compile(self.item.username + now.toString())
           }
-          self.$emit('backSubmit', {accesstoken: 'qweasdasefsdcfsdfsdf123asdasd'})
+          self.$emit('backSubmit', {accesstoken: token})
         }, (response) => {
           self.$emit('backSubmit', {accesstoken: 'ERROR!'})
         }).catch(function (response) {

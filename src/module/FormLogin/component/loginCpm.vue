@@ -13,7 +13,7 @@
     data () {
       return {
         title: 'Login',
-        loginApi: 'http://api.zhoou.com/login?'
+        loginApi: 'http://api.zhoou.com/login/'
       }
     },
     components: {
