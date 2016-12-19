@@ -7,23 +7,26 @@
           <div class="easytable-leftview" :style="{'width':leftViewWidth+'px'}">
             <!--左列头-->
             <div class="easytable-header"
-                 :style="{'width': leftViewWidth+'px', 'height':titleRowHeight+'px','background-color':titleBgColor}">
+                 :style="{'width': leftViewWidth+'px', 'height':titleRowHeight+1+'px','background-color':titleBgColor}">
               <div class="easytable-header-inner" style="display: block;">
                 <table class="easytable-htable" border="0" cellspacing="0" cellpadding="0">
-                  <tbody>
-                  <tr class="easytable-header-row">
-                    <td v-for="col in frozenCols"
-                        :class="[enableSort(col.orderBy) ? 'cursorPointer':'']"
-                        @click.stop="sortControl(col.field,col.orderBy)">
-                      <div class="easytable-cell"
-                           :style="{'width':col.width+'px','height':titleRowHeight+'px','line-height':titleRowHeight+'px','text-align':col.align}">
-                        <span class="table-title">{{col.title}} </span>
-                        <span v-if="enableSort(col.orderBy)"
-                              :class="['easytable-sort-icon', col.orderBy]"></span>
-                      </div>
-                    </td>
-                  </tr>
-                  </tbody>
+                  <thead>
+                    <template v-if="newTitleRows.length > 1">  <!--表头行数超过一行-->
+                      <tr v-for="n in newTitleRows.length">
+                        <th class="easytable-cell" v-for="item1 in newTitleRows[n-1]"
+                            :colspan="item1.colspan"
+                            :rowspan="item1.colspan>0 || n === newTitleRows.length ? 0:newTitleRows.length+1-n"
+                            :style="{'width':item1.width+'px','height':titleRowHeight+'px','line-height':titleRowHeight+'px','text-align':'center'}">{{ item1.title }}</th>
+                      </tr>
+                    </template>
+                    <template v-else> <!--表头行数一行-->
+                      <tr>
+                        <th v-for="col in frozenCols" class="easytable-cell"
+                            v-show="col.isFrozen === true"
+                            :style="{'width':col.width+'px','height':titleRowHeight+'px','line-height':titleRowHeight+'px','text-align':'center'}">{{ col.title }}</th>
+                      </tr>
+                    </template>
+                  </thead>
                 </table>
               </div>
             </div>
@@ -41,12 +44,8 @@
                           <component :rowData="item" :is="col.componentName"></component>
                         </template>
                         <template v-else>
-                                                   <span v-if="typeof col.format==='function'"
-                                                         v-html="col.format(item)">
-                                                    </span>
-                          <span v-else>
-                                                        {{item[col.field]}}
-                                                    </span>
+                          <span v-if="typeof col.format==='function'" v-html="col.format(item)"></span>
+                          <span v-else>{{item[col.field]}}</span>
                         </template>
                       </div>
                     </td>
@@ -60,42 +59,26 @@
         <!--右列-->
         <div class="easytable-rightview">
           <!--右列头-->
-          <div class="easytable-header"
-               :style="{'width': (rightViewWidth-20)+'px','background-color':titleBgColor}">
+          <div class="easytable-header" :style="{'width': (rightViewWidth-20)+'px','background-color':titleBgColor}">
             <div class="easytable-header-inner" style="display: block;">
               <table class="easytable-htable" border="0" cellspacing="0" cellpadding="0">
-                <tbody>
-
-                <template v-if="newTitleRows.length > 0">
-                  <tr v-for="row in newTitleRows">
-                    <td v-for="col in row" :class="[enableSort(col.orderBy) ? 'cursorPointer':'']"
-                        :colspan="col.colspan" :rowspan="col.rowspan"
-                        @click.stop="sortControl(col.fields[0],col.orderBy)">
-                      <div class="easytable-cell"
-                           :style="{'width':titleColumnWidth(col.fields)+'px','height':titleColumnHeight(col.rowspan)+'px','line-height':titleColumnHeight(col.rowspan)+'px','text-align':col.align}">
-                        <span class="table-title">{{col.title}} </span>
-                        <span v-if="enableSort(col.orderBy)"
-                              :class="['easytable-sort-icon', col.orderBy]"></span>
-                      </div>
-                    </td>
-                  </tr>
-                </template>
-
-                <template v-else>
-                  <tr class="easytable-header-row">
-                    <td v-for="col in noFrozenCols"
-                        :class="[enableSort(col.orderBy) ? 'cursorPointer':'']"
-                        @click.stop="sortControl(col.field,col.orderBy)">
-                      <div class="easytable-cell"
-                           :style="{'width':col.width+'px','height':titleRowHeight+'px','line-height':titleRowHeight+'px','text-align':col.align}">
-                        <span class="table-title">{{col.title}} </span>
-                        <span v-if="enableSort(col.orderBy)"
-                              :class="['easytable-sort-icon', col.orderBy]"></span>
-                      </div>
-                    </td>
-                  </tr>
-                </template>
-                </tbody>
+                <thead>
+                  <template v-if="newTitleRows.length > 1">  <!--表头行数超过一行-->
+                    <tr v-for="n in newTitleRows.length">
+                      <th class="easytable-cell" v-for="item1 in newTitleRows[n-1]"
+                          :colspan="item1.colspan"
+                          :rowspan="item1.colspan>0 || n === newTitleRows.length ? 0:newTitleRows.length+1-n"
+                          :style="{'width':item1.width+'px','height':titleRowHeight+'px','line-height':titleRowHeight+'px','text-align':'center'}">{{ item1.title }}</th>
+                    </tr>
+                  </template>
+                  <template v-else> <!--表头行数一行-->
+                    <tr>
+                      <th v-for="col in columns" class="easytable-cell"
+                          v-show="col.isFrozen !== true"
+                          :style="{'width':col.width+'px','height':titleRowHeight+'px','line-height':titleRowHeight+'px','text-align':'center'}">{{ col.title }}</th>
+                    </tr>
+                  </template>
+                </thead>
               </table>
             </div>
           </div>
@@ -104,24 +87,20 @@
                :style="{'width': rightViewWidth+'px', 'margin-top': '0px', 'height': rightViewHeight+'px'}">
             <table class="easytable-btable" cellspacing="0" cellpadding="0" border="0">
               <tbody>
-              <tr v-for="(item,index) in tableData" class="easytable-row">
-                <td v-for="col in noFrozenCols">
-                  <div class="easytable-cell"
-                       :style="{'width':col.width+'px','height': rowHeight+'px','line-height':rowHeight+'px','text-align':col.align}">
-                    <template v-if="typeof col.componentName ==='string'">
-                      <component :rowData="item" :is="col.componentName"></component>
-                    </template>
-                    <template v-else>
-                                           <span v-if="typeof col.format==='function'"
-                                                 v-html="col.format(item)">
-                                            </span>
-                      <span v-else>
-                                                {{item[col.field]}}
-                                            </span>
-                    </template>
-                  </div>
-                </td>
-              </tr>
+                <tr v-for="(item,index) in tableData" class="easytable-row">
+                  <td v-for="col in noFrozenCols">
+                    <div class="easytable-cell"
+                         :style="{'width':col.width+'px','height': rowHeight+'px','line-height':rowHeight+'px','text-align':col.align}">
+                      <template v-if="typeof col.componentName ==='string'">
+                        <component :rowData="item" :is="col.componentName"></component>
+                      </template>
+                      <template v-else>
+                        <span v-if="typeof col.format==='function'" v-html="col.format(item)"></span>
+                        <span v-else>{{item[col.field]}}</span>
+                      </template>
+                    </div>
+                  </td>
+                </tr>
               </tbody>
             </table>
           </div>
@@ -200,6 +179,16 @@
           newTitleRows: Object.assign([], this.titleRows)
         }
       },
+      watch: {
+        // 重新跟新列信息
+        columns (newVal) {
+          this.newColumns = Object.assign([], newVal)
+        },
+        // 重新覆盖复杂表头信息
+        'titleRows': function (newVal) {
+          this.newTitleRows = Object.assign([], newVal)
+        }
+      },
       computed: {
         // 冻结的列集合
         frozenCols () {
@@ -219,23 +208,22 @@
         },
         // 右侧区域宽度
         rightViewWidth () {
-          // return this.newWidth - this.leftViewWidth - 2
-          return this.newWidth
+          return this.newWidth - this.leftViewWidth - 2
         },
         // 右侧区域高度
         rightViewHeight () {
           if (this.newTitleRows.length > 0) {
-            return this.newHeight - this.titleRowHeight * this.newTitleRows.length
+            return this.newHeight - this.titleRowHeight * this.newTitleRows.length + 1
           } else {
-            return this.newHeight - this.titleRowHeight
+            return this.newHeight - this.titleRowHeight + 1
           }
         },
         // 将复杂表头配置数据简单化
         titleRowsToSortInfo () {
           let result = []
-          let vm = this
-          if (vm.newTitleRows.length > 0) {
-            vm.newTitleRows.filter(function (row) {
+          let self = this
+          if (self.newTitleRows.length > 0) {
+            self.newTitleRows.filter(function (row) {
               row.filter(function (column, index) {
                 if (typeof column.orderBy === 'string' && column.fields.length === 1) {
                   column.field = column.fields[0]
@@ -254,41 +242,41 @@
         },
         // 允许排序的列集合
         sortColumns () {
-          let vm = this
+          let self = this
           let sortColumns = {}
-          let collection = vm.titleRowsToSortInfo.length > 0 ? vm.titleRowsToSortInfo : vm.newColumns
+          let collection = self.titleRowsToSortInfo.length > 0 ? self.titleRowsToSortInfo : self.newColumns
           collection.filter(function (item, index) {
-            if (vm.enableSort(item.orderBy)) {
+            if (self.enableSort(item.orderBy)) {
               sortColumns[item.field] = item.orderBy
             }
           })
           return sortColumns
         },
         sortControl (field, orderBy) {
-          let vm = this
-          let collection = vm.titleRowsToSortInfo.length > 0 ? vm.titleRowsToSortInfo : vm.newColumns
-          if (vm.enableSort(orderBy)) {
+          let self = this
+          let collection = self.titleRowsToSortInfo.length > 0 ? self.titleRowsToSortInfo : self.newColumns
+          if (self.enableSort(orderBy)) {
             collection.filter(function (column, index) {
-              if (vm.enableSort(column.orderBy) && column.field === field) {
+              if (self.enableSort(column.orderBy) && column.field === field) {
                 column.orderBy = column.orderBy === 'asc' ? 'desc' : (column.orderBy === 'desc' ? '' : 'asc')
               }
-              if (!vm.multipleSort) {
-                if (column.field !== field && vm.enableSort(column.orderBy)) {
+              if (!self.multipleSort) {
+                if (column.field !== field && self.enableSort(column.orderBy)) {
                   column.orderBy = ''
                 }
               }
             })
-            vm.$emit('actionCallBack', vm.sortColumns())
+            self.$emit('actionCallBack', self.sortColumns())
           }
         },
         // 只允许保留第一个排序规则（‘asc’或者‘desc’）
         singelSortInit () {
-          let vm = this
+          let self = this
           let result = false
-          if (!vm.multipleSort) {
-            let collection = vm.titleRowsToSortInfo.length > 0 ? vm.titleRowsToSortInfo : vm.newColumns
+          if (!self.multipleSort) {
+            let collection = self.titleRowsToSortInfo.length > 0 ? self.titleRowsToSortInfo : self.newColumns
             collection.filter(function (item, index) {
-              if (vm.enableSort(item.orderBy) && item.orderBy !== '') {
+              if (self.enableSort(item.orderBy) && item.orderBy !== '') {
                 if (result) {
                   item.orderBy = ''
                 }
@@ -357,12 +345,12 @@
         },
         // 随着窗口改变表格自适应
         tableResize () {
-          let vm = this
-          let width = vm.width
-          let height = vm.height
-          let minWidth = vm.minWidth
-          let minHeight = vm.minHeight
-          let viewOffset = vm.getViewportOffset()
+          let self = this
+          let width = self.width
+          let height = self.height
+          let minWidth = self.minWidth
+          let minHeight = self.minHeight
+          let viewOffset = self.getViewportOffset()
           let currentWidth = $('.easytable').outerWidth()
           let currentHeight = $('.easytable').outerHeight()
           let right = $(window).width() - currentWidth - viewOffset.left
@@ -372,40 +360,29 @@
             currentWidth = currentWidth + right
             currentWidth = currentWidth > width ? width : currentWidth
             currentWidth = currentWidth < minWidth ? minWidth : currentWidth
-            vm.newWidth = currentWidth
+            self.newWidth = currentWidth
           }
           // （窗口高度缩小 && 当前高度大于最小高度） || （窗口高度扩大 && 当前高度小于最大高度）
           if ((bottom < 0 && currentHeight > minHeight) || (bottom > 0 && currentHeight < height)) {
             currentHeight = currentHeight + bottom
             currentHeight = currentHeight > height ? height : currentHeight
             currentHeight = currentHeight < minHeight ? minHeight : currentHeight
-            vm.newHeight = currentHeight
+            self.newHeight = currentHeight
           }
         }
       },
       mounted () {
-        let vm = this
-        vm.tableResize()
-        vm.scrollControl()
-        vm.singelSortInit()
+        let self = this
+        self.tableResize()
+        self.scrollControl()
+        self.singelSortInit()
         window.onresize = function (event) {
-          vm.tableResize()
-        }
-      },
-      watch: {
-        // 重新跟新列信息
-        'columns': function (newVal) {
-          this.newColumns = Object.assign([], newVal)
-        },
-        // 重新覆盖复杂表头信息
-        'titleRows': function (newVal) {
-          this.newTitleRows = Object.assign([], newVal)
+          self.tableResize()
         }
       }
     }
 </script>
 <style>
-
 .easytable-views {
   position: relative;
   overflow-x: hidden;
@@ -461,7 +438,7 @@
   height: 25px;
 }
 
-.easytable-header td, .easytable-body td, .easytable-footer td {
+.easytable-header th, .easytable-body td, .easytable-footer td {
 /*    border-width: 0 1px 1px 0;
     border-style: solid;*/
   margin: 0;

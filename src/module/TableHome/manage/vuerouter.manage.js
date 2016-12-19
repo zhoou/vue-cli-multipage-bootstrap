@@ -9,6 +9,8 @@ Vue.use(VueRouter)
 const homeCpm = r => require.ensure([], () => r(require('../component/homeCpm')), 'Table_Home')
 const baseTable = r => require.ensure([], () => r(require('../component/baseTable')), 'Table_Base')
 const easytable = r => require.ensure([], () => r(require('../component/easyTable')), 'Table_easy')
+const complexTitle = r => require.ensure([], () => r(require('../component/eTColumnGroup')), 'easyTable_columngroup')
+const frozenColumns = r => require.ensure([], () => r(require('../component/eTFrozenColumns')), 'easyTable_frozencolumns')
 const errorCpm = r => require.ensure([], () => r(require('components/Common/vError')), 'error')
 
 const baseUrl = '' // 多页面路径配置
@@ -18,6 +20,8 @@ const routes = [
   {path: baseUrl + '/home', component: homeCpm},
   {path: baseUrl + '/basetable', component: baseTable},
   {path: baseUrl + '/easytable', component: easytable},
+  {path: baseUrl + '/columngroup', component: complexTitle},
+  {path: baseUrl + '/frozencolumns', component: frozenColumns},
   {path: '*', component: errorCpm}
 ]
 

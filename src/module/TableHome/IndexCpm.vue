@@ -2,17 +2,21 @@
   <div id="table" class="container">
     <h1>{{title}}</h1>
     <ul id="navs" class="nav nav-pills" role="tablist">
-      <li v-for='item in urlItems' role="presentation" v-if="item.isDropdown != true">
-        <router-link :to="item.linkTo">{{ item.name }}</router-link>
-      </li>
-      <li role="presentation" class="dropdown" v-for='item in urlItems' v-else>
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-          EasyTable <span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu" role="menu">
-          ...
-        </ul>
-      </li>
+      <template v-for='item in urlItems'>
+        <li role="presentation" v-if="item.isDropdown != true">
+          <router-link :to="item.linkTo">{{ item.name }}</router-link>
+        </li>
+        <li role="presentation" class="dropdown" v-else>
+          <router-link class="dropdown-toggle" data-toggle="dropdown" :to="item.linkTo">
+            {{ item.name }} <span class="caret"></span>
+          </router-link>
+          <ul class="dropdown-menu" role="menu">
+            <li v-for="u in item.dropList">
+              <router-link :to="u.linkTo">{{ u.name }}</router-link>
+            </li>
+          </ul>
+        </li>
+      </template>
     </ul>
     <transition :name="transitionName">
       <router-view keep-alive></router-view>

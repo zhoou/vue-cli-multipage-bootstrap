@@ -14,10 +14,19 @@ const store = new Vuex.Store({
     urlItems: [
       {linkTo: '/home', name: 'Home'},
       {linkTo: '/basetable', name: '基础篇: base'},
-      {linkTo: '/easytable', name: 'EasyTable', isDropdown: true}
+      {
+        linkTo: '/easytable',
+        name: 'EasyTable',
+        isDropdown: true,
+        dropList: [
+          {linkTo: '/easytable', name: 'Base'},
+          {linkTo: '/columngroup', name: 'Column Group'},
+          {linkTo: '/frozencolumns', name: 'Frozen Columns'}
+        ]
+      }
     ]
   },
-  modules: {
+  getter: {
 
   }
 })
