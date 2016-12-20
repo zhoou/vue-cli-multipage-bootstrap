@@ -10,18 +10,20 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   // plugins: [logger],
   state: {
-    title: 'Vue2.0 Table Space 表格空间走廊',
+    title: 'Vue2.0 Table Space 表格空间',
     urlItems: [
       {linkTo: '/home', name: 'Home'},
       {linkTo: '/basetable', name: '基础篇: base'},
       {
-        linkTo: '/easytable',
+        linkTo: '',
         name: 'EasyTable',
         isDropdown: true,
         dropList: [
           {linkTo: '/easytable', name: 'Base'},
           {linkTo: '/columngroup', name: 'Column Group'},
-          {linkTo: '/frozencolumns', name: 'Frozen Columns'}
+          {linkTo: '/frozencolumns', name: 'Frozen Columns'},
+          {linkTo: '/checkboxs', name: 'CheckBox Selection'},
+          {linkTo: '/columnsort', name: 'Column Sort'}
         ]
       }
     ]

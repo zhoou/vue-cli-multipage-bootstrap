@@ -10,6 +10,7 @@
 * [Alert 组件](/src/components/Common/vAlert.vue)
 * [Modal 组件](/src/components/Common/vModal.vue)
 * [Table 组件](/src/components/Common/vTable.vue)
+* [easyTable 组件](/src/components/Common/vEasyTable.vue)
 * [Carousel 组件](/src/components/Common/vCarousel.vue)
 * [Loading 组件](/src/components/Common/vLoading.vue)
 * [Login 组件](/src/components/Common/vLogin.vue)
@@ -127,7 +128,7 @@ for (var pathname in pages) {
   module.exports.plugins.push(new HtmlWebpackPlugin(conf));
 }
 </code></pre>
- 
+
 #### webpack.prod.conf.js 配置：
  <pre><code>
  function getEntry(globPath) {
@@ -163,6 +164,6 @@ for (var pathname in pages) {
   webpackConfig.plugins.push(new HtmlWebpackPlugin(conf));
 }
 </code></pre>
- 
- 
+
+
 Welcome guidance ！！

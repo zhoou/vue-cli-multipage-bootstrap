@@ -11,6 +11,8 @@ const baseTable = r => require.ensure([], () => r(require('../component/baseTabl
 const easytable = r => require.ensure([], () => r(require('../component/easyTable')), 'Table_easy')
 const complexTitle = r => require.ensure([], () => r(require('../component/eTColumnGroup')), 'easyTable_columngroup')
 const frozenColumns = r => require.ensure([], () => r(require('../component/eTFrozenColumns')), 'easyTable_frozencolumns')
+const checkboxs = r => require.ensure([], () => r(require('../component/eTCheckBoxSelection')), 'easyTable_checkbox')
+const columnSort = r => require.ensure([], () => r(require('../component/eTColumnSort.vue')), 'easyTable_columnsort')
 const errorCpm = r => require.ensure([], () => r(require('components/Common/vError')), 'error')
 
 const baseUrl = '' // 多页面路径配置
@@ -22,6 +24,8 @@ const routes = [
   {path: baseUrl + '/easytable', component: easytable},
   {path: baseUrl + '/columngroup', component: complexTitle},
   {path: baseUrl + '/frozencolumns', component: frozenColumns},
+  {path: baseUrl + '/checkboxs', component: checkboxs},
+  {path: baseUrl + '/columnsort', component: columnSort},
   {path: '*', component: errorCpm}
 ]
 

@@ -1,94 +1,59 @@
 <template id="easyTable">
   <div class="easytable">
-    <div class="easytable-wrap">
-      <div class="easytable-views" :style="{'height': newHeight+'px'}">
-        <!--左列-->
-        <template v-if="frozenCols.length > 0">
-          <div class="easytable-leftview" :style="{'width':leftViewWidth+'px'}">
-            <!--左列头-->
-            <div class="easytable-header"
-                 :style="{'width': leftViewWidth+'px', 'height':titleRowHeight+1+'px','background-color':titleBgColor}">
-              <div class="easytable-header-inner" style="display: block;">
-                <table class="easytable-htable" border="0" cellspacing="0" cellpadding="0">
-                  <thead>
-                    <template v-if="newTitleRows.length > 1">  <!--表头行数超过一行-->
-                      <tr v-for="n in newTitleRows.length">
-                        <th class="easytable-cell" v-for="item1 in newTitleRows[n-1]"
-                            :colspan="item1.colspan"
-                            :rowspan="item1.colspan>0 || n === newTitleRows.length ? 0:newTitleRows.length+1-n"
-                            :style="{'width':item1.width+'px','height':titleRowHeight+'px','line-height':titleRowHeight+'px','text-align':'center'}">{{ item1.title }}</th>
-                      </tr>
-                    </template>
-                    <template v-else> <!--表头行数一行-->
-                      <tr>
-                        <th v-for="col in frozenCols" class="easytable-cell"
-                            v-show="col.isFrozen === true"
-                            :style="{'width':col.width+'px','height':titleRowHeight+'px','line-height':titleRowHeight+'px','text-align':'center'}">{{ col.title }}</th>
-                      </tr>
-                    </template>
-                  </thead>
-                </table>
-              </div>
-            </div>
-            <!--左列内容-->
-            <div class="easytable-body"
-                 :style="{'width': leftViewWidth+'px', 'margin-top': '0px', 'height': (newHeight-titleRowHeight)+'px'}">
-              <div class="easytable-body-inner">
-                <table class="easytable-btable" cellspacing="0" cellpadding="0" border="0">
-                  <tbody>
-                  <tr v-for="(item,index) in tableData" class="easytable-row">
-                    <td v-for="col in frozenCols">
-                      <div class="easytable-cell"
-                           :style="{'width':col.width+'px','height': rowHeight+'px','line-height':rowHeight+'px','text-align':col.align}">
-                        <template v-if="typeof col.componentName ==='string'">
-                          <component :rowData="item" :is="col.componentName"></component>
-                        </template>
-                        <template v-else>
-                          <span v-if="typeof col.format==='function'" v-html="col.format(item)"></span>
-                          <span v-else>{{item[col.field]}}</span>
-                        </template>
-                      </div>
-                    </td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </template>
-        <!--右列-->
-        <div class="easytable-rightview">
-          <!--右列头-->
-          <div class="easytable-header" :style="{'width': (rightViewWidth-20)+'px','background-color':titleBgColor}">
+    <div class="easytable-views" :style="{'height': newHeight+'px'}">
+      <!--左列-->
+      <template v-if="frozenCols.length > 0">
+        <div class="easytable-leftview" :style="{'width':leftViewWidth+'px'}">
+          <!--左列头-->
+          <div class="easytable-header"
+               :style="{'width': leftViewWidth+'px', 'height':titleRowHeight+1+'px','background-color':titleBgColor}">
             <div class="easytable-header-inner" style="display: block;">
               <table class="easytable-htable" border="0" cellspacing="0" cellpadding="0">
                 <thead>
                   <template v-if="newTitleRows.length > 1">  <!--表头行数超过一行-->
                     <tr v-for="n in newTitleRows.length">
+                      <th v-show="needCheckBox" class="easytable-cell"><input type="checkbox" name="checkTotal" @click='checkAll'></th>
                       <th class="easytable-cell" v-for="item1 in newTitleRows[n-1]"
                           :colspan="item1.colspan"
                           :rowspan="item1.colspan>0 || n === newTitleRows.length ? 0:newTitleRows.length+1-n"
-                          :style="{'width':item1.width+'px','height':titleRowHeight+'px','line-height':titleRowHeight+'px','text-align':'center'}">{{ item1.title }}</th>
+                          :style="{'width':item1.width+'px','height':titleRowHeight+'px','line-height':titleRowHeight+'px','text-align':item1.align}">
+                        {{ item1.title }}
+                        <span class="caret-wrapper" v-show="item1.orderBy" @click="sortData"> <!--排序上下图标显示-->
+                          <i class="sort-caret ascending"></i>
+                          <i class="sort-caret descending"></i>
+                        </span>
+                      </th>
                     </tr>
                   </template>
                   <template v-else> <!--表头行数一行-->
                     <tr>
-                      <th v-for="col in columns" class="easytable-cell"
-                          v-show="col.isFrozen !== true"
-                          :style="{'width':col.width+'px','height':titleRowHeight+'px','line-height':titleRowHeight+'px','text-align':'center'}">{{ col.title }}</th>
+                      <th v-show="needCheckBox" class="easytable-cell" style="width:30px;text-align:center"><input type="checkbox" name="checkTotal" @click='checkAll'></th>
+                      <th v-for="col in frozenCols" class="easytable-cell"
+                          v-show="col.isFrozen === true"
+                          :style="{'width':col.width+'px','height':titleRowHeight+'px','line-height':titleRowHeight+'px','text-align':col.align}">
+                        {{ col.title }}
+                        <span class="caret-wrapper" v-show="item1.orderBy" @click="sortData"> <!--排序上下图标显示-->
+                          <i class="sort-caret ascending"></i>
+                          <i class="sort-caret descending"></i>
+                        </span>
+                      </th>
                     </tr>
                   </template>
                 </thead>
               </table>
             </div>
           </div>
-          <!--右列内容-->
+          <!--左列内容-->
           <div class="easytable-body"
-               :style="{'width': rightViewWidth+'px', 'margin-top': '0px', 'height': rightViewHeight+'px'}">
-            <table class="easytable-btable" cellspacing="0" cellpadding="0" border="0">
-              <tbody>
+               :style="{'width': leftViewWidth+'px', 'margin-top': '0px', 'height': (newHeight-titleRowHeight)+'px'}">
+            <div class="easytable-body-inner">
+              <table class="easytable-btable" cellspacing="0" cellpadding="0" border="0">
+                <tbody>
                 <tr v-for="(item,index) in tableData" class="easytable-row">
-                  <td v-for="col in noFrozenCols">
+                  <td v-show="needCheckBox" class="easytable-cell"
+                      :style="{'width':'30px','text-align':'center','display':'block','height': rowHeight+'px','line-height':rowHeight+'px'}">
+                    <input type="checkbox" name="checkItem" @click='checkItem'></td>
+                  <td v-for="col in frozenCols">
                     <div class="easytable-cell"
                          :style="{'width':col.width+'px','height': rowHeight+'px','line-height':rowHeight+'px','text-align':col.align}">
                       <template v-if="typeof col.componentName ==='string'">
@@ -101,9 +66,76 @@
                     </div>
                   </td>
                 </tr>
-              </tbody>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </template>
+      <!--右列-->
+      <div class="easytable-rightview">
+        <!--右列头-->
+        <div class="easytable-header" :style="{'width': (rightViewWidth-20)+'px','background-color':titleBgColor}">
+          <div class="easytable-header-inner" style="display: block;">
+            <table class="easytable-htable" border="0" cellspacing="0" cellpadding="0">
+              <thead>
+                <template v-if="newTitleRows.length > 1">  <!--表头行数超过一行-->
+                  <tr v-for="n in newTitleRows.length">
+                    <th v-show="needCheckBox" class="easytable-cell"><input type="checkbox" name="checkTotal" @click='checkAll'></th>
+                    <th class="easytable-cell" v-for="item1 in newTitleRows[n-1]"
+                        :colspan="item1.colspan"
+                        :rowspan="item1.colspan>0 || n === newTitleRows.length ? 0:newTitleRows.length+1-n"
+                        :style="{'width':item1.width+'px','height':titleRowHeight+'px','line-height':titleRowHeight+'px','text-align':item1.align}">
+                      {{ item1.title }}
+                      <span class="caret-wrapper" v-show="item1.orderBy" @click="sortData"> <!--排序上下图标显示-->
+                        <i class="sort-caret ascending"></i>
+                        <i class="sort-caret descending"></i>
+                      </span>
+                    </th>
+                  </tr>
+                </template>
+                <template v-else> <!--表头行数一行-->
+                  <tr>
+                    <th v-show="needCheckBox" class="easytable-cell" style="width:30px;text-align:center"><input type="checkbox" name="checkTotal" @click='checkAll'></th>
+                    <th v-for="col in columns" class="easytable-cell"
+                        v-show="col.isFrozen !== true"
+                        :style="{'width':col.width+'px','height':titleRowHeight+'px','line-height':titleRowHeight+'px','text-align':col.align}">
+                      {{ col.title }}
+                      <span class="caret-wrapper" v-show="col.orderBy" @click="sortData"> <!--排序上下图标显示-->
+                        <i class="sort-caret ascending"></i>
+                        <i class="sort-caret descending"></i>
+                      </span>
+                    </th>
+                  </tr>
+                </template>
+              </thead>
             </table>
           </div>
+        </div>
+        <!--右列内容-->
+        <div class="easytable-body"
+             :style="{'width': rightViewWidth+'px', 'margin-top': '0px', 'height': rightViewHeight+'px'}">
+          <table class="easytable-btable" cellspacing="0" cellpadding="0" border="0">
+            <tbody>
+              <tr v-for="(item,index) in tableData" class="easytable-row">
+                <td v-show="needCheckBox" class="easytable-cell"
+                    :style="{'width':'30px','text-align':'center','display':'block','height': rowHeight+'px','line-height':rowHeight+'px'}">
+                  <input type="checkbox" name="checkItem" @click='checkItem'></td>
+                <td v-for="col in noFrozenCols">
+                  <div class="easytable-cell"
+                       :style="{'width':col.width+'px','height': rowHeight+'px','line-height':rowHeight+'px','text-align':col.align}">
+                    <template v-if="typeof col.componentName ==='string'">
+                      <component :rowData="item" :is="col.componentName"></component>
+                    </template>
+                    <template v-else>
+                      <span v-if="typeof col.format==='function'" v-html="col.format(item)"></span>
+                      <span v-else>{{item[col.field]}}</span>
+                    </template>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
@@ -165,6 +197,10 @@
         tableData: {
           type: Array,
           require: true
+        },
+        needCheckBox: {
+          type: Boolean,
+          default: false
         }
       },
       data () {
@@ -176,7 +212,9 @@
           // 本地列数据
           newColumns: Object.assign([], this.columns),
           // 本地复杂表头数据
-          newTitleRows: Object.assign([], this.titleRows)
+          newTitleRows: Object.assign([], this.titleRows),
+          // 获取选中checkbox列表
+          checkBoxList: []
         }
       },
       watch: {
@@ -236,38 +274,11 @@
         }
       },
       methods: {
-        // 是否允许排序
-        enableSort (val) {
-          return typeof val === 'string'
-        },
-        // 允许排序的列集合
-        sortColumns () {
-          let self = this
-          let sortColumns = {}
-          let collection = self.titleRowsToSortInfo.length > 0 ? self.titleRowsToSortInfo : self.newColumns
-          collection.filter(function (item, index) {
-            if (self.enableSort(item.orderBy)) {
-              sortColumns[item.field] = item.orderBy
-            }
-          })
-          return sortColumns
-        },
-        sortControl (field, orderBy) {
-          let self = this
-          let collection = self.titleRowsToSortInfo.length > 0 ? self.titleRowsToSortInfo : self.newColumns
-          if (self.enableSort(orderBy)) {
-            collection.filter(function (column, index) {
-              if (self.enableSort(column.orderBy) && column.field === field) {
-                column.orderBy = column.orderBy === 'asc' ? 'desc' : (column.orderBy === 'desc' ? '' : 'asc')
-              }
-              if (!self.multipleSort) {
-                if (column.field !== field && self.enableSort(column.orderBy)) {
-                  column.orderBy = ''
-                }
-              }
-            })
-            self.$emit('actionCallBack', self.sortColumns())
-          }
+        // 排序
+        sortData (e) {
+          let a = e.target
+          console.log(e)
+          a.style.borderBottomColor = 'red'
         },
         // 只允许保留第一个排序规则（‘asc’或者‘desc’）
         singelSortInit () {
@@ -316,7 +327,7 @@
             e.preventDefault()
             let e1 = e.originalEvent || window.event
             let scrollHeight = e1.wheelDelta || e1.detail * (-1)
-            $body2.scrollTop($body2.scrollTop() - scrollHeight)
+            $body2.scrollTop($(this).scrollTop() - scrollHeight)
           })
           $body2.bind('scroll', function () {
             $body1.scrollTop($(this).scrollTop())
@@ -325,6 +336,7 @@
             if (c1.length && c2.length) {
               let top1 = c1.offset().top
               let top2 = c2.offset().top
+              top2 = top2 === 0 ? top1 : top2 // 组件切换时左右滚动不联动异常处理代码
               if (top1 !== top2) {
                 $body1.scrollTop($body1.scrollTop() + top1 - top2)
               }
@@ -369,6 +381,38 @@
             currentHeight = currentHeight < minHeight ? minHeight : currentHeight
             self.newHeight = currentHeight
           }
+        },
+        // 选中所有checkbox
+        checkAll (e) {
+          let self = this
+          let isChecked = e.target.checked
+          $("input[name='checkItem']").prop('checked', isChecked)
+          let note = 'None'
+          if (isChecked === true) {
+            note = 'All'
+            for (let i = 0; i < self.tableData.length; i++) {
+              self.checkBoxList.push(self.tableData[i].name)
+            }
+          } else {
+            self.checkBoxList = []
+          }
+          this.$emit('backData', {check: note})
+        },
+        // 选中某个checkbox，返回选中行数据
+        checkItem (e) {
+          let self = this
+          let index = e.target.parentNode.parentNode.rowIndex
+          let indexdata = self.tableData[index]
+          let isChecked = e.target.checked
+          if (isChecked) {
+            self.checkBoxList.push(indexdata.name)
+          } else {
+            let i = self.checkBoxList.indexOf(indexdata.name)
+            if (i > -1) {
+              self.checkBoxList.splice(i, 1)
+            }
+          }
+          this.$emit('backData', {check: self.checkBoxList})
         }
       },
       mounted () {
@@ -504,4 +548,47 @@
     font-weight: bold;
     color:#444;
 }
+
+/*上下排序图标显示 -- begin*/
+
+.easytable-views .caret-wrapper {
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: -2px;
+  width: 16px;
+  height: 34px;
+  overflow: initial;
+}
+.easytable-views .caret-wrapper .sort-caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border: 0;
+    content: "";
+    position: absolute;
+    left: 3px;
+    z-index: 2;
+}
+.easytable-views .descending .sort-caret.descending {
+    border-top-color: #475669;
+}
+.easytable-views .sort-caret.descending {
+    bottom: 11px;
+    border-top: 5px solid #99a9bf;
+    border-bottom: none;
+}
+.easytable-views .sort-caret.ascending {
+    top: 11px;
+    border-top: none;
+    border-bottom: 5px solid #99a9bf;
+}
+.easytable-views .sort-caret.ascending, .easytable-views .sort-caret.descending {
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+}
+
+/*上下排序图标显示 -- end*/
+
 </style>
