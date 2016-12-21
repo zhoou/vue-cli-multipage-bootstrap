@@ -15,11 +15,11 @@ const store = new Vuex.Store({
       {linkTo: '/home', name: 'Home'},
       {linkTo: '/basetable', name: '基础篇: base'},
       {
-        linkTo: '',
+        linkTo: '/easytable',
         name: 'EasyTable',
         isDropdown: true,
-        dropList: [
-          {linkTo: '/easytable', name: 'Base'},
+        children: [
+          {linkTo: '/etbase', name: 'Base'},
           {linkTo: '/columngroup', name: 'Column Group'},
           {linkTo: '/frozencolumns', name: 'Frozen Columns'},
           {linkTo: '/checkboxs', name: 'CheckBox Selection'},
@@ -28,9 +28,7 @@ const store = new Vuex.Store({
       }
     ]
   },
-  getter: {
-
-  }
+  getter: {}
 })
 
 export default store

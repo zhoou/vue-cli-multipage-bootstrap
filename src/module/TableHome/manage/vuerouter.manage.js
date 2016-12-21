@@ -8,24 +8,33 @@ Vue.use(VueRouter)
 
 const homeCpm = r => require.ensure([], () => r(require('../component/homeCpm')), 'Table_Home')
 const baseTable = r => require.ensure([], () => r(require('../component/baseTable')), 'Table_Base')
-const easytable = r => require.ensure([], () => r(require('../component/easyTable')), 'Table_easy')
+const etbase = r => require.ensure([], () => r(require('../component/easyTable')), 'Table_easy')
 const complexTitle = r => require.ensure([], () => r(require('../component/eTColumnGroup')), 'easyTable_columngroup')
 const frozenColumns = r => require.ensure([], () => r(require('../component/eTFrozenColumns')), 'easyTable_frozencolumns')
 const checkboxs = r => require.ensure([], () => r(require('../component/eTCheckBoxSelection')), 'easyTable_checkbox')
-const columnSort = r => require.ensure([], () => r(require('../component/eTColumnSort.vue')), 'easyTable_columnsort')
+const columnSort = r => require.ensure([], () => r(require('../component/eTColumnSort')), 'easyTable_columnsort')
 const errorCpm = r => require.ensure([], () => r(require('components/Common/vError')), 'error')
 
 const baseUrl = '' // 多页面路径配置
+
+const et = {
+  template: '<router-view keep-alive></router-view>'
+}
 
 const routes = [
   {path: baseUrl + '/', redirect: baseUrl + '/home'},
   {path: baseUrl + '/home', component: homeCpm},
   {path: baseUrl + '/basetable', component: baseTable},
-  {path: baseUrl + '/easytable', component: easytable},
-  {path: baseUrl + '/columngroup', component: complexTitle},
-  {path: baseUrl + '/frozencolumns', component: frozenColumns},
-  {path: baseUrl + '/checkboxs', component: checkboxs},
-  {path: baseUrl + '/columnsort', component: columnSort},
+  {
+    path: baseUrl + '/easytable',
+    component: et,
+    children: [
+      {path: 'etbase', component: etbase},
+      {path: 'columngroup', component: complexTitle},
+      {path: 'frozencolumns', component: frozenColumns},
+      {path: 'checkboxs', component: checkboxs},
+      {path: 'columnsort', component: columnSort}
+    ]},
   {path: '*', component: errorCpm}
 ]
 

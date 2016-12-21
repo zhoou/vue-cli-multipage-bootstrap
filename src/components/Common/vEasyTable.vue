@@ -12,7 +12,8 @@
                 <thead>
                   <template v-if="newTitleRows.length > 1">  <!--表头行数超过一行-->
                     <tr v-for="n in newTitleRows.length">
-                      <th v-show="needCheckBox" class="easytable-cell"><input type="checkbox" name="checkTotal" @click='checkAll'></th>
+                      <th v-show="needCheckBox" class="easytable-cell">
+                        <input type="checkbox" name="checkTotal" @click='checkAll'></th>
                       <th class="easytable-cell" v-for="item1 in newTitleRows[n-1]"
                           :colspan="item1.colspan"
                           :rowspan="item1.colspan>0 || n === newTitleRows.length ? 0:newTitleRows.length+1-n"
@@ -27,12 +28,13 @@
                   </template>
                   <template v-else> <!--表头行数一行-->
                     <tr>
-                      <th v-show="needCheckBox" class="easytable-cell" style="width:30px;text-align:center"><input type="checkbox" name="checkTotal" @click='checkAll'></th>
+                      <th v-show="needCheckBox" class="easytable-cell" style="width:30px;text-align:center">
+                        <input type="checkbox" name="checkTotal" @click='checkAll'></th>
                       <th v-for="col in frozenCols" class="easytable-cell"
                           v-show="col.isFrozen === true"
                           :style="{'width':col.width+'px','height':titleRowHeight+'px','line-height':titleRowHeight+'px','text-align':col.align}">
                         {{ col.title }}
-                        <span class="caret-wrapper" v-show="item1.orderBy" @click="sortData"> <!--排序上下图标显示-->
+                        <span class="caret-wrapper" v-show="col.orderBy" @click="sortData"> <!--排序上下图标显示-->
                           <i class="sort-caret ascending"></i>
                           <i class="sort-caret descending"></i>
                         </span>
@@ -81,7 +83,8 @@
               <thead>
                 <template v-if="newTitleRows.length > 1">  <!--表头行数超过一行-->
                   <tr v-for="n in newTitleRows.length">
-                    <th v-show="needCheckBox" class="easytable-cell"><input type="checkbox" name="checkTotal" @click='checkAll'></th>
+                    <th v-show="needCheckBox" class="easytable-cell">
+                      <input type="checkbox" name="checkTotal" @click='checkAll'></th>
                     <th class="easytable-cell" v-for="item1 in newTitleRows[n-1]"
                         :colspan="item1.colspan"
                         :rowspan="item1.colspan>0 || n === newTitleRows.length ? 0:newTitleRows.length+1-n"
@@ -96,12 +99,13 @@
                 </template>
                 <template v-else> <!--表头行数一行-->
                   <tr>
-                    <th v-show="needCheckBox" class="easytable-cell" style="width:30px;text-align:center"><input type="checkbox" name="checkTotal" @click='checkAll'></th>
+                    <th v-show="needCheckBox" class="easytable-cell" style="width:30px;text-align:center">
+                      <input type="checkbox" name="checkTotal" @click='checkAll'></th>
                     <th v-for="col in columns" class="easytable-cell"
                         v-show="col.isFrozen !== true"
                         :style="{'width':col.width+'px','height':titleRowHeight+'px','line-height':titleRowHeight+'px','text-align':col.align}">
                       {{ col.title }}
-                      <span class="caret-wrapper" v-show="col.orderBy" @click="sortData"> <!--排序上下图标显示-->
+                      <span class="caret-wrapper" v-show="col.orderBy" @click="sortData()"> <!--排序上下图标显示-->
                         <i class="sort-caret ascending"></i>
                         <i class="sort-caret descending"></i>
                       </span>
@@ -276,24 +280,16 @@
       methods: {
         // 排序
         sortData (e) {
-          let a = e.target
           console.log(e)
-          a.style.borderBottomColor = 'red'
-        },
-        // 只允许保留第一个排序规则（‘asc’或者‘desc’）
-        singelSortInit () {
-          let self = this
-          let result = false
-          if (!self.multipleSort) {
-            let collection = self.titleRowsToSortInfo.length > 0 ? self.titleRowsToSortInfo : self.newColumns
-            collection.filter(function (item, index) {
-              if (self.enableSort(item.orderBy) && item.orderBy !== '') {
-                if (result) {
-                  item.orderBy = ''
-                }
-                result = true
-              }
-            })
+          let a = e.target.className
+          if (a.indexOf('descending') !== -1) {
+            e.target.parentNode.children[0].style.borderBottomColor = ''
+            // $('.caret-wrapper').children('.ascending').css('border-bottom-color','')
+            e.target.style.borderTopColor = 'red'
+            // this.tableData.reversed['name'] = true
+          } else if (a.indexOf('ascending') !== -1) {
+            e.target.parentNode.children[1].style.borderTopColor = ''
+            e.target.style.borderBottomColor = 'red'
           }
         },
         // 获取每个表头列的宽度
@@ -419,7 +415,7 @@
         let self = this
         self.tableResize()
         self.scrollControl()
-        self.singelSortInit()
+        // self.singelSortInit()
         window.onresize = function (event) {
           self.tableResize()
         }
@@ -557,7 +553,6 @@
   display: inline-block;
   vertical-align: middle;
   margin-top: -2px;
-  width: 16px;
   height: 34px;
   overflow: initial;
 }
@@ -571,9 +566,7 @@
     left: 3px;
     z-index: 2;
 }
-.easytable-views .descending .sort-caret.descending {
-    border-top-color: #475669;
-}
+
 .easytable-views .sort-caret.descending {
     bottom: 11px;
     border-top: 5px solid #99a9bf;

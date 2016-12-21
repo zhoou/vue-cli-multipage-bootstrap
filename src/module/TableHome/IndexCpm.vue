@@ -11,8 +11,8 @@
             {{ item.name }} <span class="caret"></span>
           </router-link>
           <ul class="dropdown-menu" role="menu">
-            <li v-for="u in item.dropList">
-              <router-link :to="u.linkTo">{{ u.name }}</router-link>
+            <li v-for="u in item.children">
+              <router-link :to="item.linkTo + u.linkTo">{{ u.name }}</router-link>
             </li>
           </ul>
         </li>
