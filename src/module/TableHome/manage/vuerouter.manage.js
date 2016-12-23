@@ -13,6 +13,8 @@ const complexTitle = r => require.ensure([], () => r(require('../component/eTCol
 const frozenColumns = r => require.ensure([], () => r(require('../component/eTFrozenColumns')), 'easyTable_frozencolumns')
 const checkboxs = r => require.ensure([], () => r(require('../component/eTCheckBoxSelection')), 'easyTable_checkbox')
 const columnSort = r => require.ensure([], () => r(require('../component/eTColumnSort')), 'easyTable_columnsort')
+const specialColumn = r => require.ensure([], () => r(require('../component/eTSpecialColumn')), 'easyTable_specialColumn')
+const customizeColumn = r => require.ensure([], () => r(require('../component/eTCustomizeColumn')), 'easyTable_customizeColumn')
 const errorCpm = r => require.ensure([], () => r(require('components/Common/vError')), 'error')
 
 const baseUrl = '' // 多页面路径配置
@@ -33,7 +35,9 @@ const routes = [
       {path: 'columngroup', component: complexTitle},
       {path: 'frozencolumns', component: frozenColumns},
       {path: 'checkboxs', component: checkboxs},
-      {path: 'columnsort', component: columnSort}
+      {path: 'columnsort', component: columnSort},
+      {path: 'specialcolumn', component: specialColumn},
+      {path: 'customizecolumn', component: customizeColumn}
     ]},
   {path: '*', component: errorCpm}
 ]

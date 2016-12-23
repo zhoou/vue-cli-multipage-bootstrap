@@ -1,5 +1,5 @@
-<template id="easyTable">
-  <div class="easytable">
+<template>
+  <div class="easytable" id="easyTable">
     <div class="easytable-views" :style="{'height': newHeight+'px'}">
       <!--左列-->
       <template v-if="frozenCols.length > 0">
@@ -12,14 +12,14 @@
                 <thead>
                   <template v-if="newTitleRows.length > 1">  <!--表头行数超过一行-->
                     <tr v-for="n in newTitleRows.length">
-                      <th v-show="needCheckBox" class="easytable-cell">
+                      <th v-if="needCheckBox" class="easytable-cell">
                         <input type="checkbox" name="checkTotal" @click='checkAll'></th>
                       <th class="easytable-cell" v-for="item1 in newTitleRows[n-1]"
                           :colspan="item1.colspan"
                           :rowspan="item1.colspan>0 || n === newTitleRows.length ? 0:newTitleRows.length+1-n"
                           :style="{'width':item1.width+'px','height':titleRowHeight+'px','line-height':titleRowHeight+'px','text-align':item1.align}">
                         {{ item1.title }}
-                        <span class="caret-wrapper" v-show="item1.orderBy" @click="sortData"> <!--排序上下图标显示-->
+                        <span class="caret-wrapper" v-if="item1.orderBy" @click="sortData"> <!--排序上下图标显示-->
                           <i class="sort-caret ascending"></i>
                           <i class="sort-caret descending"></i>
                         </span>
@@ -28,13 +28,13 @@
                   </template>
                   <template v-else> <!--表头行数一行-->
                     <tr>
-                      <th v-show="needCheckBox" class="easytable-cell" style="width:30px;text-align:center">
+                      <th v-if="needCheckBox" class="easytable-cell" style="width:30px;text-align:center">
                         <input type="checkbox" name="checkTotal" @click='checkAll'></th>
                       <th v-for="col in frozenCols" class="easytable-cell"
                           v-show="col.isFrozen === true"
                           :style="{'width':col.width+'px','height':titleRowHeight+'px','line-height':titleRowHeight+'px','text-align':col.align}">
                         {{ col.title }}
-                        <span class="caret-wrapper" v-show="col.orderBy" @click="sortData"> <!--排序上下图标显示-->
+                        <span class="caret-wrapper" v-if="col.orderBy" @click="sortData"> <!--排序上下图标显示-->
                           <i class="sort-caret ascending"></i>
                           <i class="sort-caret descending"></i>
                         </span>
@@ -52,18 +52,23 @@
               <table class="easytable-btable" cellspacing="0" cellpadding="0" border="0">
                 <tbody>
                 <tr v-for="(item,index) in tableData" class="easytable-row">
-                  <td v-show="needCheckBox" class="easytable-cell"
+                  <td v-if="needCheckBox" class="easytable-cell"
                       :style="{'width':'30px','text-align':'center','display':'block','height': rowHeight+'px','line-height':rowHeight+'px'}">
-                    <input type="checkbox" name="checkItem" @click='checkItem'></td>
+                    <input type="checkbox" name="checkItem" @click='checkItem'></td> <!--显示checkbox-->
                   <td v-for="col in frozenCols">
                     <div class="easytable-cell"
                          :style="{'width':col.width+'px','height': rowHeight+'px','line-height':rowHeight+'px','text-align':col.align}">
-                      <template v-if="typeof col.componentName ==='string'">
-                        <component :rowData="item" :is="col.componentName"></component>
+                      <template v-if="col.type === 'image'">  <!--显示图片类型-->
+                        <img :src="item[col.field]" :height="rowHeight">
                       </template>
                       <template v-else>
-                        <span v-if="typeof col.format==='function'" v-html="col.format(item)"></span>
-                        <span v-else>{{item[col.field]}}</span>
+                        <template v-if="typeof col.componentName ==='string'">
+                          <component :rowData="item" :is="col.componentName"></component>
+                        </template>
+                        <template v-else>
+                          <span v-if="typeof col.format==='function'" v-html="col.format(item)"></span>
+                          <span v-else>{{item[col.field]}}</span>
+                        </template>
                       </template>
                     </div>
                   </td>
@@ -83,14 +88,14 @@
               <thead>
                 <template v-if="newTitleRows.length > 1">  <!--表头行数超过一行-->
                   <tr v-for="n in newTitleRows.length">
-                    <th v-show="needCheckBox" class="easytable-cell">
+                    <th v-if="needCheckBox" class="easytable-cell">
                       <input type="checkbox" name="checkTotal" @click='checkAll'></th>
                     <th class="easytable-cell" v-for="item1 in newTitleRows[n-1]"
                         :colspan="item1.colspan"
                         :rowspan="item1.colspan>0 || n === newTitleRows.length ? 0:newTitleRows.length+1-n"
                         :style="{'width':item1.width+'px','height':titleRowHeight+'px','line-height':titleRowHeight+'px','text-align':item1.align}">
                       {{ item1.title }}
-                      <span class="caret-wrapper" v-show="item1.orderBy" @click="sortData"> <!--排序上下图标显示-->
+                      <span class="caret-wrapper" v-if="item1.orderBy" @click="sortData"> <!--排序上下图标显示-->
                         <i class="sort-caret ascending"></i>
                         <i class="sort-caret descending"></i>
                       </span>
@@ -99,13 +104,13 @@
                 </template>
                 <template v-else> <!--表头行数一行-->
                   <tr>
-                    <th v-show="needCheckBox" class="easytable-cell" style="width:30px;text-align:center">
+                    <th v-if="needCheckBox" class="easytable-cell" style="width:30px;text-align:center">
                       <input type="checkbox" name="checkTotal" @click='checkAll'></th>
                     <th v-for="col in columns" class="easytable-cell"
                         v-show="col.isFrozen !== true"
                         :style="{'width':col.width+'px','height':titleRowHeight+'px','line-height':titleRowHeight+'px','text-align':col.align}">
                       {{ col.title }}
-                      <span class="caret-wrapper" v-show="col.orderBy" @click="sortData()"> <!--排序上下图标显示-->
+                      <span class="caret-wrapper" v-if="col.orderBy" @click="sortData"> <!--排序上下图标显示-->
                         <i class="sort-caret ascending"></i>
                         <i class="sort-caret descending"></i>
                       </span>
@@ -122,18 +127,29 @@
           <table class="easytable-btable" cellspacing="0" cellpadding="0" border="0">
             <tbody>
               <tr v-for="(item,index) in tableData" class="easytable-row">
-                <td v-show="needCheckBox" class="easytable-cell"
+                <td v-if="needCheckBox" class="easytable-cell"
                     :style="{'width':'30px','text-align':'center','display':'block','height': rowHeight+'px','line-height':rowHeight+'px'}">
-                  <input type="checkbox" name="checkItem" @click='checkItem'></td>
+                  <input type="checkbox" name="checkItem" @click='checkItem'></td> <!--显示checkbox-->
                 <td v-for="col in noFrozenCols">
-                  <div class="easytable-cell"
+                  <div class="easytable-cell" v-if="col.hoverShow && col.hoverShow.length>0"
+                       :style="{'width':col.width+'px','height': rowHeight+'px','line-height':rowHeight+'px','text-align':col.align}"> <!--hover 显示隐藏数据-->
+                    <span class="easytable-tag" @mouseenter='handleMouseEnter($event, col)' @mouseleave='handleMouseLeave($event)'>
+                      {{item[col.field]}}
+                    </span>
+                  </div>
+                  <div class="easytable-cell" v-else
                        :style="{'width':col.width+'px','height': rowHeight+'px','line-height':rowHeight+'px','text-align':col.align}">
-                    <template v-if="typeof col.componentName ==='string'">
-                      <component :rowData="item" :is="col.componentName"></component>
+                    <template v-if="col.field === 'img'"> <!--显示图片类型-->
+                      <img :src="item[col.field]" :height="rowHeight">
                     </template>
                     <template v-else>
-                      <span v-if="typeof col.format==='function'" v-html="col.format(item)"></span>
-                      <span v-else>{{item[col.field]}}</span>
+                      <template v-if="typeof col.componentName ==='string'">
+                        <component :rowData="item" :is="col.componentName"></component>
+                      </template>
+                      <template v-else>
+                        <span v-if="typeof col.format==='function'" v-html="col.format(item)"></span>
+                        <span v-else>{{item[col.field]}}</span>
+                      </template>
                     </template>
                   </div>
                 </td>
@@ -143,11 +159,19 @@
         </div>
       </div>
     </div>
+    <v-popover :show="showPopper" :setObj="popperObj">
+      <template v-for="col in tableData">
+        <p v-for="item in popperData">
+          {{ item.title }} : {{ col[item.field] }}
+        </p>
+      </template>
+    </v-popover>
   </div>
 </template>
 
 <script>
     import $ from 'jquery'
+    import vPopover from 'components/Common/vPopover'
     export default {
       name: 'easyTable',
       props: {
@@ -218,7 +242,11 @@
           // 本地复杂表头数据
           newTitleRows: Object.assign([], this.titleRows),
           // 获取选中checkbox列表
-          checkBoxList: []
+          checkBoxList: [],
+          // hover 显示补充内容
+          showPopper: false,
+          popperObj: {},
+          popperData: {}
         }
       },
       watch: {
@@ -280,16 +308,29 @@
       methods: {
         // 排序
         sortData (e) {
-          console.log(e)
-          let a = e.target.className
-          if (a.indexOf('descending') !== -1) {
+          let sortClass = e.target.className
+          let sortName = e.target.parentNode.parentNode.innerText.trim()
+          if (sortClass.indexOf('descending') !== -1) {
             e.target.parentNode.children[0].style.borderBottomColor = ''
-            // $('.caret-wrapper').children('.ascending').css('border-bottom-color','')
             e.target.style.borderTopColor = 'red'
-            // this.tableData.reversed['name'] = true
-          } else if (a.indexOf('ascending') !== -1) {
+            this.tableData.sort(this.orderByData(sortName, 'desc'))
+          } else if (sortClass.indexOf('ascending') !== -1) {
             e.target.parentNode.children[1].style.borderTopColor = ''
             e.target.style.borderBottomColor = 'red'
+            this.tableData.sort(this.orderByData(sortName, 'asc'))
+          }
+        },
+        orderByData (sortName, type) {
+          let items = this.columns.filter(function (item) {
+            return item.title === sortName
+          })
+          let property = items[0].field
+          return function (a, b) {
+            if (type === 'desc') {
+              return b[property].localeCompare(a[property])
+            } else if (type === 'asc') {
+              return a[property].localeCompare(b[property])
+            }
           }
         },
         // 获取每个表头列的宽度
@@ -409,20 +450,50 @@
             }
           }
           this.$emit('backData', {check: self.checkBoxList})
+        },
+        // hover 显示
+        handleMouseEnter (e, item) {
+          let self = this
+          let h = e.clientY - self.minHeight
+          e.target.style.backgroundColor = 'red'
+          self.popperObj = {
+            left: item.width,
+            top: h
+          }
+          self.showPopper = true
+          self.popperData = self.tableData.filter(function (d) {
+            console.log(item)
+            if (d.name === item.name) {
+              return d
+            }
+          })
+          clearTimeout(self._timer)
+        },
+        handleMouseLeave (e) {
+          e.target.style.backgroundColor = '#8492a6'
+          this.showPopper = false
+          this._timer = setTimeout(() => {
+            this.showPopper = false
+          }, 200)
         }
       },
       mounted () {
         let self = this
         self.tableResize()
         self.scrollControl()
-        // self.singelSortInit()
         window.onresize = function (event) {
           self.tableResize()
         }
+      },
+      components: {
+        vPopover
       }
     }
 </script>
 <style>
+.easytable {
+  position:relative;
+}
 .easytable-views {
   position: relative;
   overflow-x: hidden;
@@ -583,5 +654,19 @@
 }
 
 /*上下排序图标显示 -- end*/
+
+.easytable-tag{
+    background-color: #8492a6;
+    display: inline-block;
+    padding: 0 5px;
+    height: 24px;
+    line-height: 22px;
+    font-size: 12px;
+    color: #fff;
+    border-radius: 4px;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+    white-space: nowrap;
+}
 
 </style>

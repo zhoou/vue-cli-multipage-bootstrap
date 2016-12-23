@@ -21,7 +21,7 @@
   export default {
     data () {
       return {
-        title: 'Column Sort',
+        title: 'Base Table',
         tables: {
           width: 1140,
           minWidth: 600,
@@ -29,10 +29,11 @@
           minHeight: 300,
           tableData: [],
           columns: [
-            {field: 'name', title: '姓名', width: 80, align: 'center', orderBy: true},
+            {field: 'img', title: '头像', width: 50, align: 'center', type: 'image'},
+            {field: 'name', title: '姓名', width: 80, align: 'center'},
             {field: 'gender', title: '性别', width: 50, align: 'center'},
             {field: 'nickname', title: '昵称', width: 80, align: 'center'},
-            {field: 'birthday', title: '出生日期', width: 100, align: 'center', orderBy: true},
+            {field: 'birthday', title: '出生日期', width: 100, align: 'center'},
             {field: 'height', title: '身高', width: 80, align: 'center', isFrozen: false},
             {field: 'tel', title: '手机号码', width: 100, align: 'center', isFrozen: false},
             {field: 'email', title: '邮箱', width: 120, align: 'center', isFrozen: false},

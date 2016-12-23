@@ -23,7 +23,9 @@ const store = new Vuex.Store({
           {linkTo: '/columngroup', name: 'Column Group'},
           {linkTo: '/frozencolumns', name: 'Frozen Columns'},
           {linkTo: '/checkboxs', name: 'CheckBox Selection'},
-          {linkTo: '/columnsort', name: 'Column Sort'}
+          {linkTo: '/columnsort', name: 'Column Sort'},
+          {linkTo: '/specialcolumn', name: 'Special Column'},
+          {linkTo: '/customizecolumn', name: 'Customize Column'}
         ]
       }
     ]
