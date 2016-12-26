@@ -133,7 +133,7 @@
                 <td v-for="col in noFrozenCols">
                   <div class="easytable-cell" v-if="col.hoverShow && col.hoverShow.length>0"
                        :style="{'width':col.width+'px','height': rowHeight+'px','line-height':rowHeight+'px','text-align':col.align}"> <!--hover 显示隐藏数据-->
-                    <span class="easytable-tag" @mouseenter='handleMouseEnter($event, col)' @mouseleave='handleMouseLeave($event)'>
+                    <span class="easytable-tag" @mouseenter='handleMouseEnter($event, col.hoverShow)' @mouseleave='handleMouseLeave($event)'>
                       {{item[col.field]}}
                     </span>
                   </div>
@@ -160,10 +160,8 @@
       </div>
     </div>
     <v-popover :show="showPopper" :setObj="popperObj">
-      <template v-for="col in tableData">
-        <p v-for="item in popperData">
-          {{ item.title }} : {{ col[item.field] }}
-        </p>
+      <template v-for="item in popperData">
+        <p>{{ item.name }} : {{ item.value }}</p>
       </template>
     </v-popover>
   </div>
@@ -454,19 +452,27 @@
         // hover 显示
         handleMouseEnter (e, item) {
           let self = this
-          let h = e.clientY - self.minHeight
+          let top = e.target.getBoundingClientRect().top - self.minHeight
+          let h = top > 0 ? top + 'px' : 0
           e.target.style.backgroundColor = 'red'
           self.popperObj = {
-            left: item.width,
+            left: e.target.parentNode.style.width,
             top: h
           }
           self.showPopper = true
           self.popperData = self.tableData.filter(function (d) {
-            console.log(item)
-            if (d.name === item.name) {
+            if (d.name === e.target.innerText) {
               return d
             }
           })
+          let temp = []
+          item.filter(function (d) {
+            temp.push({
+              name: d.title,
+              value: self.popperData[0][d.field]
+            })
+          })
+          self.popperData = temp
           clearTimeout(self._timer)
         },
         handleMouseLeave (e) {
