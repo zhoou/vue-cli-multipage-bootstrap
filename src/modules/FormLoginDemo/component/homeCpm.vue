@@ -9,19 +9,19 @@
 </template>
 
 <script>
-  export default {
-    name: 'home',
-    data () {
-      return {
-        title: 'Welcome to zhoou Vue.js 2.0 App',
-        jumpUrl: '/officialdemo.html'
-      }
-    },
-    methods: {
-      goPage (url) {
-        let hosts = this.utilHelper.getLocalUrl()
-        window.open(hosts + url)
-      }
+export default {
+  name: 'VHome',
+  data () {
+    return {
+      title: 'Welcome to zhoou Vue.js 2.0 App',
+      jumpUrl: '/officialdemo.html'
+    }
+  },
+  methods: {
+    goPage (url) {
+      let hosts = this.utilHelper.getLocalUrl()
+      window.open(hosts + url)
     }
   }
+}
 </script>

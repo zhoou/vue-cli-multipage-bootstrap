@@ -1,4 +1,4 @@
-<template id="alertCpm">
+<template>
   <div class="panel panel-primary">
     <div class="panel-heading">{{ title }}</div>
     <div class="panel-body">
@@ -45,7 +45,7 @@
 <script>
   import valert from 'components/Common/vAlert'
   export default {
-    name: 'alertCpm',
+    name: 'ValertCpm',
     data () {
       return {
         title: 'Alert 弹框 -- Demo',

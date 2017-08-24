@@ -4,7 +4,7 @@
     <div class="panel-body">
       <div class="bs-example">
         <h4>课程表</h4>
-        <vTable :configs='settings'></vTable>
+        <v-table :configs='settings'></v-table>
       </div>
     </div>
   </div>
@@ -13,7 +13,7 @@
 <script>
   import vTable from 'components/Common/vTable'
   export default {
-    name: 'basetable',
+    name: 'VBaseTable',
     data () {
       return {
         settings: {

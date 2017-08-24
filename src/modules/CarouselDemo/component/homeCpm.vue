@@ -3,14 +3,14 @@
     <img src="../../../assets/logo.png" />
     <h1>{{title}}</h1>
     <div class="link">
-      <button class="btn btn-info" @click="goPage(jumpUrl)">前往教程学习</button>
+      <button class="btn btn-info" @click.stop="goPage(jumpUrl)">前往教程学习</button>
     </div>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'home',
+    name: 'VHome',
     data () {
       return {
         title: 'Welcome to zhoou Vue.js 2.0 App',

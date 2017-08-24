@@ -53,6 +53,7 @@
 <script>
   import vmodal from 'components/Common/vModal'
   export default {
+    name: 'VModalDemo',
     data () {
       return {
         title: 'Modal 弹窗',

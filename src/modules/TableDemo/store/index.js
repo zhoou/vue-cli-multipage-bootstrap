@@ -3,7 +3,7 @@
  */
 import Vue from 'vue'
 import Vuex from 'vuex'
-// import logger from './logger.manage'  // 记录日志 ：logger 插件会生成状态快照，所以仅在开发环境使用。
+// import logger from './logger'  // 记录日志 ：logger 插件会生成状态快照，所以仅在开发环境使用。
 
 Vue.use(Vuex)
 

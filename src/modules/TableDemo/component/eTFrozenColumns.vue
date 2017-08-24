@@ -2,23 +2,25 @@
   <div class="panel panel-primary">
     <div class="panel-heading">{{ title }}</div>
     <div class="panel-body" style="padding:0;">
-      <v-easyTable :width="tables.width"
-                   :minWidth="tables.minWidth"
-                   :height="tables.height"
-                   :minHeight="tables.minHeight"
-                   :multipleSort="tables.multipleSort"
-                   :titleRows="tables.titleRows"
-                   :columns="tables.columns"
-                   :tableData="tables.tableData"
-      ></v-easyTable>
+      <v-easy-table
+        :width="tables.width"
+        :minWidth="tables.minWidth"
+        :height="tables.height"
+        :minHeight="tables.minHeight"
+        :multipleSort="tables.multipleSort"
+        :titleRows="tables.titleRows"
+        :columns="tables.columns"
+        :tableData="tables.tableData"
+      ></v-easy-table>
     </div>
   </div>
 </template>
 
 <script>
   import vEasyTable from 'components/Common/vEasyTable'
-  import mockData from '../manage/simpleData'
+  import mockData from '../data/simpleData'
   export default {
+    name: 'VeTFrozenColumns',
     data () {
       return {
         title: 'Frozen Columns',

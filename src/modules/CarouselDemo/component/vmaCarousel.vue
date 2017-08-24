@@ -1,9 +1,9 @@
-<template id="vmaCarousel">
+<template>
   <div class="panel panel-primary">
     <div class="panel-heading">{{ title }}</div>
     <div class="panel-body">
       <div class="row">
-        <vaCarousel :img-lists='imgLists'></vaCarousel>
+        <va-carousel :img-lists='imgLists'></va-carousel>
       </div>
     </div>
   </div>
@@ -12,7 +12,7 @@
 <script>
   import vaCarousel from 'components/Common/vCarousel_A'
   export default {
-    name: 'vmaCarousel',
+    name: 'VmaCarousel',
     data () {
       return {
         title: '轮播类型A',

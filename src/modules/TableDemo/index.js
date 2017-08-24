@@ -7,8 +7,8 @@ import 'assets/css/Common.css'
 import 'assets/css/table.css'
 
 import IndexCpm from './IndexCpm.vue'
-import store from './manage/vuex.manage'
-import router from './manage/vuerouter.manage'
+import store from './store'
+import router from './router'
 
 import util from 'jspath/common/util'
 

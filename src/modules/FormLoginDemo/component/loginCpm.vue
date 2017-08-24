@@ -10,6 +10,7 @@
   import 'bootstrap-validator'
   import vLogin from 'components/Common/vLogin'
   export default {
+    name: 'VLogin',
     data () {
       return {
         title: 'Login',

@@ -2,7 +2,7 @@
   <div class="panel panel-primary">
     <div class="panel-heading">{{ title }}</div>
     <div class="panel-body" style="padding:0;">
-      <v-easyTable
+      <v-easy-table
         :width="tables.width"
         :minWidth="tables.minWidth"
         :height="tables.height"
@@ -12,7 +12,7 @@
         :tableData="tables.tableData"
         :needCheckBox="tables.needCheckBox"
         @backData="receiveBackData"
-      ></v-easyTable>
+      ></v-easy-table>
       <div class="result">
         <p>你选中了： <small>{{ result }}</small></p>
       </div>
@@ -22,8 +22,9 @@
 
 <script>
   import vEasyTable from 'components/Common/vEasyTable'
-  import mockData from '../manage/simpleData'
+  import mockData from '../data/simpleData'
   export default {
+    name: 'VeTCheckBoxSelection',
     data () {
       return {
         title: 'CheckBox Selection',
