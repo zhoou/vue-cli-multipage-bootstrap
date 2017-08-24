@@ -31,38 +31,38 @@
 </template>
 
 <script>
-  import $ from 'jquery'
-  import hljs from 'highlight.js'
+import $ from 'jquery'
+import hljs from 'highlight.js'
 
-  import countCpm from 'components/Vuex/countApp'
-  import mapStateCpm from 'components/Vuex/mapStateCpm'
-  import gettersCpm from 'components/Vuex/gettersCpm'
-  import mutationsCpm from 'components/Vuex/mutationsCpm'
-  import actionsCpm from 'components/Vuex/actionsCpm'
-  import modulesCpm from 'components/Vuex/modulesCpm'
+import countCpm from './countApp'
+import mapStateCpm from './mapStateCpm'
+import gettersCpm from './gettersCpm'
+import mutationsCpm from './mutationsCpm'
+import actionsCpm from './actionsCpm'
+import modulesCpm from './modulesCpm'
 
-  export default{
-    name: 'vuex',
-    data () {
-      return {
-        headtitle: 'Vuex Learn Demo'
-      }
-    },
-    components: {
-      countCpm,
-      mapStateCpm,
-      gettersCpm,
-      mutationsCpm,
-      actionsCpm,
-      modulesCpm
-    },
-    mounted () {
-      hljs.initHighlightingOnLoad()
-      $(function () {
-        $('pre code').each(function (i, block) {
-          hljs.highlightBlock(block)
-        })
-      })
+export default {
+  name: 'Vvuex',
+  data () {
+    return {
+      headtitle: 'Vuex Learn Demo'
     }
+  },
+  components: {
+    countCpm,
+    mapStateCpm,
+    gettersCpm,
+    mutationsCpm,
+    actionsCpm,
+    modulesCpm
+  },
+  mounted () {
+    hljs.initHighlightingOnLoad()
+    $(function () {
+      $('pre code').each(function (i, block) {
+        hljs.highlightBlock(block)
+      })
+    })
   }
+}
 </script>

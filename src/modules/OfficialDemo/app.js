@@ -6,19 +6,18 @@ import 'assets/css/bootstrap.min.css'
 import 'assets/css/Common.css'
 import 'assets/css/hljs.css'
 
-import appCpm from './appCpm'
-import store from './manage/vuex.manage'
-import router from './manage/vuerouter.manage'
+import VApp from './app.vue'
+import store from './store'
+import router from './router'
 
 import util from 'jspath/common/util'
-import 'bootstrap'
 
 Vue.prototype.utilHelper = util
 
-/* eslint-disable*/
+/* eslint-disable no-new */
 new Vue({
-    el: '#app',
-    store,
-    router,
-    render: page => page(appCpm)
+  el: '#app',
+  store,
+  router,
+  render: page => page(VApp)
 })

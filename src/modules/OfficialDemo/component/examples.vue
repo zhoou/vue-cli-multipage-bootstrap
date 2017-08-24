@@ -1,4 +1,4 @@
-<template id="Examples">
+<template>
   <div class="panel panel-primary example">
     <div class="panel-heading">{{ headtitle }}</div>
     <div class="panel-body">
@@ -17,7 +17,7 @@
 <script>
   import { mapState } from 'vuex'
   export default {
-    name: 'Examples',
+    name: 'VExamples',
     computed: {
       ...mapState({
         headtitle: state => state.exampleDemo.title,

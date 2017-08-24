@@ -12,8 +12,9 @@
   import $ from 'jquery'
   import hljs from 'highlight.js'
 
-  import demoResource from 'components/VueResource/demoResource'
+  import demoResource from './demoResource'
   export default {
+    name: 'VResource',
     data () {
       return {
         headtitle: 'vue-resource Demo'

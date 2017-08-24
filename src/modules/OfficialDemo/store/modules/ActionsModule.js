@@ -1,7 +1,7 @@
 /**
  * Created by zhoou on 2016/11/30.
  */
-import store from '../manage/vuex.manage'
+import store from '../index'
 
 const ActionsModule = {
   state: {
@@ -20,8 +20,8 @@ const ActionsModule = {
   // Action 提交的是 mutation，而不是直接变更状态。
   // Action 可以包含任意异步操作。
   actions: {
-    clearResult: ({commit}) => commit('ClearResult'),
-    CalculationAsync ({commit}, answer) {
+    clearResult: ({ commit }) => commit('ClearResult'),
+    CalculationAsync ({ commit }, answer) {
       return store.dispatch('clearResult').then(() => {
         setTimeout(() => {
           commit('CalculationAsync', answer)

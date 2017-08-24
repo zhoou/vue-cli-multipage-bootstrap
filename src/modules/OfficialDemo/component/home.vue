@@ -23,7 +23,7 @@
 
 <script>
 export default {
-  name: 'home',
+  name: 'Vhome',
   data () {
     return {
       msg: 'Welcome to zhoou Vue.js 2.0 App'

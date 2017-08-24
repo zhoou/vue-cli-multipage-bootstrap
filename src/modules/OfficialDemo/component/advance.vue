@@ -21,8 +21,8 @@
 </template>
 <script>
     import vModal from 'components/Common/vModal'
-    export default{
-      name: 'AdvanceDemo',
+    export default {
+      name: 'VAdvanceDemo',
       data () {
         return {
           isShow: false

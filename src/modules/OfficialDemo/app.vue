@@ -15,7 +15,7 @@
 <script>
 import { mapState } from 'vuex'
 export default {
-  name: 'app',
+  name: 'VApp',
   data () {
     return {
       transitionName: ''

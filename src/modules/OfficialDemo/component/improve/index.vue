@@ -1,4 +1,4 @@
-<template id="ImproveDemo">
+<template>
   <div class="panel panel-primary">
       <div class="panel-heading">三、Vue.js 提高</div>
       <div class="panel-body">
@@ -26,12 +26,12 @@
     import $ from 'jquery'
     import hljs from 'highlight.js'
 
-    import nextTickCpm from 'components/Improve/nextTickCpm'
-    import transEffectCpm from 'components/Improve/transEffectCpm'
-    import transStateCpm from 'components/Improve/transStateCpm'
+    import nextTickCpm from './nextTickCpm'
+    import transEffectCpm from './transEffectCpm'
+    import transStateCpm from './transStateCpm'
 
     export default {
-      name: 'ImproveDemo',
+      name: 'VImproveDemo',
       components: {
         nextTickCpm,
         transEffectCpm,

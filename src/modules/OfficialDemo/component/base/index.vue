@@ -1,4 +1,4 @@
-<template id="BaseDemo">
+<template>
   <div class="panel panel-primary">
       <div class="panel-heading">二、Vue.js 基础</div>
       <div class="panel-body">
@@ -31,33 +31,33 @@
 </template>
 
 <script>
-    import $ from 'jquery'
-    import hljs from 'highlight.js'
+import $ from 'jquery'
+import hljs from 'highlight.js'
 
-    import demoCpm08 from 'components/Base/demoCpm_08'
-    import demoCpm09 from 'components/Base/demoCpm_09'
-    import demoCpm10 from 'components/Base/demoCpm_10'
-    import demoCpm11 from 'components/Base/demoCpm_11'
-    import demoCpm12 from 'components/Base/demoCpm_12'
+import demoCpm08 from './child_demo01'
+import demoCpm09 from './child_demo02'
+import demoCpm10 from './child_demo03'
+import demoCpm11 from './child_demo04'
+import demoCpm12 from './child_demo05'
 
-    export default {
-      name: 'BaseDemo',
-      components: {
-        demoCpm08,
-        demoCpm09,
-        demoCpm10,
-        demoCpm11,
-        demoCpm12
-      },
-      mounted () {
-        this.$nextTick(() => {
-          hljs.initHighlightingOnLoad()
-          $(function () {
-            $('pre code').each(function (i, block) {
-              hljs.highlightBlock(block)
-            })
-          })
+export default {
+  name: 'VBaseDemo',
+  components: {
+    demoCpm08,
+    demoCpm09,
+    demoCpm10,
+    demoCpm11,
+    demoCpm12
+  },
+  mounted () {
+    this.$nextTick(() => {
+      hljs.initHighlightingOnLoad()
+      $(function () {
+        $('pre code').each(function (i, block) {
+          hljs.highlightBlock(block)
         })
-      }
-    }
+      })
+    })
+  }
+}
 </script>
