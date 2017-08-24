@@ -5,7 +5,7 @@
         <ol>
           <!-- Now we provide each todo-item with the todo object    -->
           <!-- it's representing, so that its content can be dynamic -->
-          <item v-for="item in groceryList" v-bind:todo="item"></item>
+          <item :key="index" v-for="(item,index) in groceryList" v-bind:todo="item"></item>
         </ol>
       </div>
     </div>

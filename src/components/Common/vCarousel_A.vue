@@ -2,7 +2,7 @@
   <div class="vm-container">
     <div class="vm-viewport">
       <ul class="vmcarousel-centered vm-centered vmcarousel">
-        <li v-for="(item, index) in lists" :data-slide="index"><img :src="item" alt="" :width="imgWidth"></li>
+        <li :key="index" v-for="(item, index) in lists" :data-slide="index"><img :src="item" alt="" :width="imgWidth"></li>
       </ul>
     </div>
     <a @click='btn_left' class="vm-arrow-left"><i class="iconfont">&#xe779;</i></a>
@@ -12,7 +12,8 @@
 
 <script>
   import $ from 'jquery'
-  import Modernizr from 'modernizr'
+  // import {Modernizr} from 'modernizr'
+  const Modernizr = require('modernizr')
   export default {
     name: 'vma',
     props: {

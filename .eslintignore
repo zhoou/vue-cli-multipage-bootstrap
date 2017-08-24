@@ -1,1 +1,3 @@
-**/libs/*.js
+build/*.js
+config/*.js
+src/assets/js/**/*.js

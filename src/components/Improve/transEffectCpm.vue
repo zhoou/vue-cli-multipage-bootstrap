@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="demo" v-cloak>
-            <button class="btn btn-info" @click="show = !show">
+            <button class="btn btn-info" @click.stop="show = !show">
               Toggle render
             </button>
             <transition name="slide-fade">
@@ -74,6 +74,17 @@
   </div>
 </template>
 
+<script>
+    export default {
+      name: 'transitionModal',
+      data () {
+        return {
+          show: true
+        }
+      }
+    }
+</script>
+
 <style>
   /* 可以设置不同的进入和离开动画 */
 /* 设置持续时间和动画函数 */
@@ -88,15 +99,4 @@
   opacity: 0;
 }
 </style>
-
-<script>
-    export default{
-      name: 'transitionModal',
-      data () {
-        return {
-          show: true
-        }
-      }
-    }
-</script>
 

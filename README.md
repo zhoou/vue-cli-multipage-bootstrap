@@ -10,7 +10,6 @@
 * [Alert 组件](/src/components/Common/vAlert.vue)
 * [Modal 组件](/src/components/Common/vModal.vue)
 * [Table 组件](/src/components/Common/vTable.vue)
-* [easyTable 组件](/src/components/Common/vEasyTable.vue)
 * [Carousel 组件](/src/components/Common/vCarousel.vue)
 * [Loading 组件](/src/components/Common/vLoading.vue)
 * [Login 组件](/src/components/Common/vLogin.vue)
@@ -25,10 +24,10 @@
 ###The initial access path：
 <ul>
 <li>OfficialDemo： http://localhost:9091/officialdemo.html</li>
-<li>TableHome： http://localhost:9091/tablehome.html</li>
-<li>PopupsHome： http://localhost:9091/popupshome.html</li>
-<li>CarouselHome： http://localhost:9091/carouselhome.html</li>
-<li>FormLogin： http://localhost:9091/formlogin.html</li>
+<li>TableDemo： http://localhost:9091/tabledemo.html</li>
+<li>PopupsDemo： http://localhost:9091/popupsdemo.html</li>
+<li>CarouselDemo： http://localhost:9091/carouseldemo.html</li>
+<li>FormLoginDemo： http://localhost:9091/formlogindemo.html</li>
 </ul>
 
 you can click the nav '案例：Examples' and choice 'TableHome' to jump to another project 'tablehome.html'.
@@ -128,7 +127,7 @@ for (var pathname in pages) {
   module.exports.plugins.push(new HtmlWebpackPlugin(conf));
 }
 </code></pre>
-
+ 
 #### webpack.prod.conf.js 配置：
  <pre><code>
  function getEntry(globPath) {
@@ -164,6 +163,6 @@ for (var pathname in pages) {
   webpackConfig.plugins.push(new HtmlWebpackPlugin(conf));
 }
 </code></pre>
-
-
+ 
+ 
 Welcome guidance ！！

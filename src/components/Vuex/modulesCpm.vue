@@ -110,8 +110,6 @@
     name: 'count',
     data () {
       return {
-        num: 0,
-        count: 0
       }
     },
     computed: mapState({

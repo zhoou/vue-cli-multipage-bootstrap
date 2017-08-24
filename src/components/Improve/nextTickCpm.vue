@@ -5,7 +5,7 @@
         <div class="col-xs-12">
           <div class="demo" v-cloak>
             <div>{{message}}</div>
-            <button class="btn btn-info" @click='updateMessage'>Update</button>
+            <button class="btn btn-info" @click.stop='updateMessage'>Update</button>
           </div>
         </div>
         <div class="col-xs-12">
@@ -47,18 +47,18 @@
         </pre>
       </div>
     </div>
-    <vmodal :show='show' name='modalB' effect="feed" :width="400" @backUpState="receiveChildState">
+    <v-modal :show='show' name='modalB' effect="feed" :width="400" @backUpState="receiveChildState">
       <div slot="modal-body" class="modal-body">
         {{ content }}
       </div>
-    </vmodal>
+    </v-modal>
   </div>
 </template>
 
 <script>
-    import vmodal from 'components/Common/vModal'
+    import vModal from 'components/Common/vModal'
 
-    export default{
+    export default {
       name: 'nextTick',
       data () {
         return {
@@ -68,7 +68,7 @@
         }
       },
       components: {
-        vmodal
+        vModal
       },
       methods: {
         updateMessage: function () {

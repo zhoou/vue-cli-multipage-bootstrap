@@ -9,10 +9,10 @@
               v-on:keyup.enter="updateColor"
               placeholder="Enter a color"
             >
-            <button class="btn btn-info" v-on:click="updateColor">Update</button>
+            <button class="btn btn-info" @click.stop="updateColor">Update</button>
             <p>Preview:</p>
             <span
-              v-bind:style="{ backgroundColor: tweenedCSSColor }"
+              :style="{ backgroundColor: tweenedCSSColor }"
               class="example-7-color-preview"
             ></span>
             <p>{{ tweenedCSSColor }}</p>
@@ -102,19 +102,11 @@
   </div>
 </template>
 
-<style>
-  .example-7-color-preview {
-    display: inline-block;
-    width: 50px;
-    height: 50px;
-  }
-</style>
-
 <script>
-  import TWEEN from 'jspath/libs/tween'
-  import Color from 'jspath/libs/color'
+  import TWEEN from '@tweenjs/tween.js'
+  import Color from 'color-js'
 
-  export default{
+  export default {
     name: 'transitionModal',
     data () {
       return {
@@ -134,7 +126,7 @@
     watch: {
       color: function () {
         function animate (time) {
-          window.requestAnimationFrame(animate)
+          requestAnimationFrame(animate)
           TWEEN.update(time)
         }
         new TWEEN.Tween(this.tweenedColor)
@@ -161,4 +153,12 @@
     }
   }
 </script>
+
+<style>
+  .example-7-color-preview {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+  }
+</style>
 

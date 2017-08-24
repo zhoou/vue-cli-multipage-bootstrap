@@ -62,12 +62,13 @@
 <script>
   import vmodal from 'components/Common/vModal'
 
-  export default{
+  export default {
     name: 'demo12',
     data () {
       return {
         counter: 0,
-        show: false
+        show: false,
+        modalshow: 'modalshow'
       }
     },
     components: {
