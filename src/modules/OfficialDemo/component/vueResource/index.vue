@@ -12,7 +12,7 @@
   import $ from 'jquery'
   import hljs from 'highlight.js'
 
-  import demoResource from './demoResource'
+  import demoResource from './demoResource.md'
   export default {
     name: 'VResource',
     data () {

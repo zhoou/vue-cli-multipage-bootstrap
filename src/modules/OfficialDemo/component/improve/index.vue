@@ -3,20 +3,17 @@
       <div class="panel-heading">三、Vue.js 提高</div>
       <div class="panel-body">
         <div class="bs-example">
-          <h4>为了在数据变化之后等待 Vue 完成更新 DOM ，可以在数据变化之后立即使用 Vue.nextTick(callback) 。这样回调在 DOM 更新完成后就会调用。</h4>
           <next-tick-cpm></next-tick-cpm>
         </div>
         <div class="bs-example">
-          <h4> CSS 过渡和动画 ：transition 封装组件</h4>
           <trans-effect-cpm></trans-effect-cpm>
         </div>
-        <div class="bs-example">
-          <h4> 过渡状态 </h4>
+        <div class="bs-example">          
           <trans-state-cpm></trans-state-cpm>
         </div>
         <div class="pagelink">
-          <a href="app.html#/startdemo" class="btn">&lt;&lt;基础篇: base</a>
-          <a href="app.html#/advancedemo" class="btn">进阶篇：advance&gt;&gt;</a>
+          <a href="#startdemo" class="btn">&lt;&lt;基础篇: base</a>
+          <a href="#advancedemo" class="btn">进阶篇：advance&gt;&gt;</a>
         </div>
       </div>
     </div>
@@ -26,9 +23,9 @@
     import $ from 'jquery'
     import hljs from 'highlight.js'
 
-    import nextTickCpm from './nextTickCpm'
-    import transEffectCpm from './transEffectCpm'
-    import transStateCpm from './transStateCpm'
+    import nextTickCpm from './nextTickCpm.md'
+    import transEffectCpm from './transEffectCpm.md'
+    import transStateCpm from './transStateCpm.md'
 
     export default {
       name: 'VImproveDemo',

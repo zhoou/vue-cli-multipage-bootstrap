@@ -12,21 +12,13 @@ body>h1{
 }
 .bs-example {
     position: relative;
-    padding: 45px 15px 15px;
+    padding: 16px;
     margin: 0 -15px 15px;
     border-color: #e5e5e5 #eee #eee;
     border-style: solid;
     border-width: 1px 0;
     -webkit-box-shadow: inset 0 3px 6px rgba(0,0,0,.05);
     box-shadow: inset 0 3px 6px rgba(0,0,0,.05);
-}
-.bs-example>h4{
-  margin: -30px 0 20px 30px;
-  font-size: 10px;
-  color: #0123dd;
-  padding: 2px;
-  text-align: center;
-  overflow: hidden;
 }
 .bs-example:after {
     position: absolute;
@@ -38,10 +30,6 @@ body>h1{
     text-transform: uppercase;
     letter-spacing: 1px;
     content: "实例";
-}
-.zero-clipboard {
-    position: relative;
-    display: none;
 }
 .btn-clipboard {
     position: absolute;
@@ -56,12 +44,6 @@ body>h1{
     background-color: #c7254e;
     border: 1px solid #e1e1e8;
     border-radius: 0 4px 0 4px;
-}
-.bs-example+.highlight, .bs-example+.zero-clipboard+.highlight {
-    /*margin: 15px -15px 15px;*/
-    /*padding-top: 15px;*/
-    border-width: 0 0 1px;
-    border-radius: 0;
 }
 .highlight {
     margin-bottom: 14px;
@@ -88,11 +70,6 @@ body>h1{
     color: #fff;
 }
 
-pre code{
-  white-space: inherit;
-  margin-left: -60px;
-}
-
 pre .keyword, pre .attribute {
     color: #e96900;
 }
@@ -111,18 +88,18 @@ pre .number, pre .literal {
   text-align: center;
 }
 .demo {
-    border: 1px solid #eee;
+    border:1px solid peachpuff;
     border-radius: 2px;
+    background-color: gainsboro;
     padding: 10px;
-    height: 180px;
+    margin-top: 20px;
+    min-height: 66px;
     font-size: 1.2em;
     line-height: 1.5em;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    overflow-x: scroll;
-    overflow-y: scroll;
 }
 .highdemo{
   height: 560px;
@@ -141,21 +118,6 @@ pre .number, pre .literal {
         -webkit-box-shadow: none;
         box-shadow: none;
         overflow: auto;
-    }
-    .zero-clipboard {
-        display: block;
-    }
-    .bs-example+.zero-clipboard .btn-clipboard {
-        top: -16px;
-        border-top-right-radius: 0;
-    }
-    .bs-example+.highlight, .bs-example+.zero-clipboard+.highlight {
-        margin-top: -16px;
-        margin-right: 0;
-        margin-left: 0;
-        border-width: 1px;
-        border-bottom-right-radius: 4px;
-        border-bottom-left-radius: 4px;
     }
 }
 .hello {

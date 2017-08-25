@@ -14,6 +14,9 @@ import util from 'jspath/common/util'
 
 Vue.prototype.utilHelper = util
 
+import demoBox from './component/DemoBox.vue'
+Vue.component('demo-box', demoBox)
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

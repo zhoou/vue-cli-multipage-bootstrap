@@ -3,12 +3,11 @@
     <div class="panel-heading">四、Vue.js 进阶</div>
     <div class="panel-body">
       <div class="bs-example">
-        <h4>Modal 组件</h4>
         <button class="btn btn-info" @click='openModal'>弹窗: 只有header和body</button>
       </div>
       <div class="pagelink">
-        <a href="app.html#/startdemo" class="btn">&lt;&lt;基础篇: base</a>
-        <a href="app.html#/improvedemo" class="btn">提高篇：improve&gt;&gt;</a>
+        <a href="#startdemo" class="btn">&lt;&lt;基础篇: base</a>
+        <a href="#improvedemo" class="btn">提高篇：improve&gt;&gt;</a>
       </div>
     </div>
     <vModal :show='isShow' @backUpState="changeShowState">
