@@ -3,7 +3,8 @@
 > A Vue.js2.0 project with Bootstrap which integrated the vue official online examples to components and some components build by myself to anyone who interested in .
 
 <div align="center">
-  <img src="https://github.com/zhoou/DataSource/blob/master/images/vue-cli-multipage-bootstrap.gif?raw=true"  alt="vue-cli-multipage-bootstrap"/>
+  <img src="https://github.com/zhoou/DataSource/blob/master/images/newvue2.png" alt="vue-cli-multipage-bootstrap-new">
+  <img src="https://github.com/zhoou/DataSource/blob/master/images/vue-cli-multipage-bootstrap.gif?raw=true" alt="vue-cli-multipage-bootstrap"/>
 </div>
 
 ## Components
@@ -163,6 +164,11 @@ for (var pathname in pages) {
   webpackConfig.plugins.push(new HtmlWebpackPlugin(conf));
 }
 </code></pre>
- 
- 
+
+## markdown配置
+
+详见：build\webpack.markdown.js
+主要使用的插件：[markdown-it](https://github.com/markdown-it/markdown-it)
+
+
 Welcome guidance ！！

@@ -1,7 +1,7 @@
 {
   "name": "vue-cli-multipage-bootstrap",
   "version": "2.1.0",
-  "description": "A Vue.js2.0 project with Bootstrap",
+  "description": "A Vue.js2.x project with Bootstrap",
   "author": "zhoou <1773963119@qq.com>",
   "private": true,
   "scripts": {
