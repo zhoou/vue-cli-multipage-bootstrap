@@ -1,12 +1,13 @@
-var utils = require('./utils')
-var webpack = require('webpack')
-var glob = require('glob')
-var path = require('path')
-var config = require('../config')
-var merge = require('webpack-merge')
-var baseWebpackConfig = require('./webpack.base.conf')
-var HtmlWebpackPlugin = require('html-webpack-plugin')
-var FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+'use strict'
+const utils = require('./utils')
+const webpack = require('webpack')
+const glob = require('glob')
+const path = require('path')
+const config = require('../config')
+const merge = require('webpack-merge')
+const baseWebpackConfig = require('./webpack.base.conf')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 
 // add hot-reload related code to entry chunks
 Object.keys(baseWebpackConfig.entry).forEach(function(name) {
@@ -14,6 +15,7 @@ Object.keys(baseWebpackConfig.entry).forEach(function(name) {
 })
 
 module.exports = merge(baseWebpackConfig, {
+    mode: 'development',
     module: {
         rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap })
     },
@@ -22,10 +24,6 @@ module.exports = merge(baseWebpackConfig, {
     plugins: [
         new webpack.DefinePlugin({
             'process.env': config.dev.env
-        }),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendors',
-            filename: 'vendors.js'
         }),
         // https://github.com/glenjamin/webpack-hot-middleware#installation--usage
         new webpack.HotModuleReplacementPlugin(),

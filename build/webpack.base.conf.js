@@ -1,10 +1,13 @@
-var path = require('path')
-var glob = require('glob')
-var webpack = require('webpack')
-var utils = require('./utils')
-var config = require('../config')
-var vueLoaderConfig = require('./vue-loader.conf')
-var markdown = require('./webpack.markdown.js');
+'use strict'
+const path = require('path')
+const glob = require('glob')
+const webpack = require('webpack')
+const utils = require('./utils')
+const config = require('../config')
+const vueLoaderConfig = require('./vue-loader.conf')
+// const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const markdown = require('./webpack.markdown.js')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 function resolve(dir) {
     return path.join(__dirname, '..', dir)
@@ -101,6 +104,7 @@ module.exports = {
       ]
     },
     plugins: [
+      // new VueLoaderPlugin(),
       new webpack.ProvidePlugin({
         $: "jquery",
         jQuery: "jquery",
@@ -108,5 +112,17 @@ module.exports = {
         "window.jQuery": "jquery",
         "hljs": 'hljs'
       })
-    ]
+    ],
+    optimization: {
+      splitChunks: {
+        cacheGroups: {
+          commons: {
+            chunks: 'initial',
+            minChunks: 3,
+            name: 'vendors',
+            enforce: true
+          }
+        }
+      }
+    }
 }
